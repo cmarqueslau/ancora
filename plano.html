@@ -13,7 +13,9 @@
 </head>
 
 <body class="plano">
-    <header></header>
+    <div id="template-header"></div>
+    <div id="template-sidebar"></div>
+
     <main>
         <h1 id="titulo">Plano de Segurança</h1>
         <section>
@@ -41,13 +43,14 @@
                             </label>
                         </div>
 
-                        <input class="form-check-input" type="checkbox" value="" name="fisicos"> 
+                        <input class="form-check-input" type="checkbox" value="" name="fisicos">
                         <label class="form-check-label" for="fisicos">Sinais físicos</label> <br>
-                        <input class="form-check-input" type="checkbox" value="" name="sentimentos"> 
+                        <input class="form-check-input" type="checkbox" value="" name="sentimentos">
                         <label class="form-check-label" for="sentimentos">Sentimentos /emoçõe específicos</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="frustação"> 
+                        <input class="form-check-input" type="checkbox" value="" name="frustação">
                         <label class="form-check-label" for="frustação">Frustração / expectativas</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="tristeza"> <label class="form-check-label" for="tristeza">Tristeza / humor negativo</label><br>
+                        <input class="form-check-input" type="checkbox" value="" name="tristeza"> <label
+                            class="form-check-label" for="tristeza">Tristeza / humor negativo</label><br>
                         <input class="form-check-input" type="checkbox" value="" name="medo"> <label
                             class="form-check-label" for="medo">Medo / ataque de pânico</label><br>
                         <input class="form-check-input" type="checkbox" value="" name="irritabilidade"> <label
@@ -82,6 +85,20 @@
             </div>
         </section>
     </main>
+    <div id="template-footer"></div>
+
+    <script>
+        async function loadTemplate(id, file) {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        } 
+        loadTemplate('template-header', '_header.html');
+        loadTemplate('template-sidebar', '_sidebar.html');
+        loadTemplate('template-footer', '_footer.html');
+
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
