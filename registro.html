@@ -7,6 +7,11 @@
   <title>Registro Cognitivo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </head>
 
 <body class="temp-body registro-cognitivo">
@@ -17,10 +22,10 @@
       <h1 class="text-center mb-4" style="color:#3b5998; font-weight:700">Registro Cognitivo</h1>
       <form id="registro-cognitivo-form">
         <div class="row g-4">
-          <!-- Avaliação Psicológica -->
+          <!-- avaliação psicologica -->
           <div class="col-md-6">
             <div class="card-form">
-              <h2 class="section-title">Avaliação Psicológica</h2>
+              <h2 class="section-title"><i class="bi bi-heart-pulse-fill me-2"></i>Avaliação Psicológica</h2>
               <div class="d-flex flex-column gap-2">
                 <div>
                   <input type="checkbox" class="btn-check" id="ansioso" name="psicologico[]" value="ansioso">
@@ -39,16 +44,18 @@
                   <label class="btn btn-option w-100 text-start" for="apatico">Apático</label>
                 </div>
               </div>
-              <button type="button" class="btn-add" onclick="toggleExtra('extraPsico')">+ Adicionar</button>
-              <input type="text" id="extraPsico" name="psicologico_outro" class="form-control input-extra"
-                placeholder="Descreva outro estado">
-            </div>
+              <div class="text-end">
+                <button type="button" class="btn-add" onclick="toggleExtra('extraPsico')">+ Adicionar</button>
+                <input type="text" id="extraPsico" name="psicologico_outro" class="form-control input-extra"
+                  placeholder="Descreva outro estado">
+              </div>
           </div>
+        </div>
 
-          <!-- Reações Fisiológicas -->
+          <!-- reações fisiológicas -->
           <div class="col-md-6">
             <div class="card-form">
-              <h2 class="section-title">Reações Fisiológicas</h2>
+              <h2 class="section-title"><i class="bi bi-lungs-fill"></i>Reações Fisiológicas</h2>
               <div class="d-flex flex-column gap-2">
                 <div>
                   <input type="checkbox" class="btn-check" id="falta_ar" name="fisiologico[]" value="falta_ar">
@@ -67,9 +74,11 @@
                   <label class="btn btn-option w-100 text-start" for="cansaco">Cansaço</label>
                 </div>
               </div>
+              <div class="text-end">
               <button type="button" class="btn-add" onclick="toggleExtra('extraFisico')">+ Adicionar</button>
               <input type="text" id="extraFisico" name="fisiologico_outro" class="form-control input-extra"
                 placeholder="Descreva outro sintoma">
+              </div>
             </div>
           </div>
         </div>
@@ -111,13 +120,14 @@
       const res = await fetch(file);
       const html = await res.text();
       document.getElementById(id).innerHTML = html;
+
     }
 
     loadTemplate('template-header', '_header.html');
     loadTemplate('template-sidebar', '_sidebar.html');
     loadTemplate('template-footer', '_footer.html');
+
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
