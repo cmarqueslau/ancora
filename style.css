@@ -7,10 +7,16 @@
     --cor3: rgb(202, 144, 126);
     --cor4: rgb(153, 70, 54);
     --cor5: rgb(100, 66, 22);
+
+    /* essas variáveis são temporárias, depois eu adequo certinho */
+    --temp-primary: #1b4b8a;
+    --temp-secondary: #c3cad5;
+    --temp-accent: #e8eef7;
+    --temp-text: #3a3a3a;
+    --temp-light-text: #6a6a6a;
+    --temp-card-bg: #dfe7ec;
+    --temp-border-radius: 12px;
 }
-
-
-
 
 .plano {
     background-color: var(--cor1);
@@ -59,3 +65,248 @@
     width: 300px;
     height: 200px;
 }
+
+/* Header */
+.temp-header {
+    background-color: var(--temp-card-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .temp-logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .temp-logo-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+  
+  .temp-logo-title {
+    margin-left: 15px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--temp-primary);
+    font-weight: 700;
+  }
+  
+  .temp-nav-links a {
+    margin-left: 20px;
+    color: var(--temp-text);
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  /* Sidebar */
+  .temp-sidebar {
+    width: 80px;
+    height: calc(100vh - 70px);
+    background-color: var(--temp-card-bg);
+    transition: all 0.3s ease;
+    position: sticky;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .temp-sidebar.expanded {
+    width: 350px;
+    padding-right: 20px;
+  }
+  
+  .temp-sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .temp-sidebar-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .temp-nav-item {
+    display: flex;
+    align-items: center;
+    width: 98%;
+    text-decoration: none;
+    color: var(--temp-text);
+    height: 70px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: var(--temp-border-radius);
+  }
+  
+  .temp-nav-item:hover {
+    background-color: var(--temp-accent);
+  }
+  
+  .temp-icon-wrapper {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 30px;
+  }
+  
+  .temp-nav-icon {
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+  }
+  
+  #temp-icon-voltar {
+    color: #10386c;
+  }
+  #temp-icon-cadastro {
+    color: #1b4b8a;
+  }
+  #temp-icon-contato {
+    color: #2a5998;
+  }
+  #temp-icon-frases {
+    color: #3f6dab;
+  }
+  #temp-icon-sobre {
+    color: #578ace;
+  }
+  
+  .temp-nav-text {
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    width: 0;
+    transition: opacity 0.2s ease, width 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .temp-sidebar.expanded .temp-nav-text {
+    opacity: 1;
+    width: auto;
+    margin: 0 25px;
+  }
+  
+  .temp-content {
+    padding: 30px;
+    flex-grow: 1;
+  }
+  
+  .temp-footer {
+    background-color: var(--temp-card-bg);
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .temp-footer-links a {
+    color: var(--temp-light-text);
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .temp-sidebar {
+      width: 0;
+      position: fixed;
+      left: 0;
+      height: 100vh;
+      padding-top: 80px;
+      background-color: var(--temp-card-bg);
+      z-index: 1000;
+    }
+  
+    .temp-sidebar.expanded {
+      width: 250px;
+    }
+  
+    .temp-nav-links {
+      display: none;
+    }
+  }
+  
+  /* --- Registro Cognitivo --- */
+  
+  body.registro-cognitivo {
+    background-color: #f4f9fc;
+    color: #2c3e50;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  
+  #registro-cognitivo-form .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #3b5998;
+  }
+  
+  #registro-cognitivo-form .card-form {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+  }
+  
+  #registro-cognitivo-form .btn-option {
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    border: 2px solid #d0e6f7;
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+  
+  #registro-cognitivo-form .btn-option:hover,
+  #registro-cognitivo-form .btn-check:checked + .btn-option {
+    background-color: #3b5998;
+    color: #fff;
+    border-color: #3b5998;
+  }
+  
+  #registro-cognitivo-form .btn-add {
+    font-size: 0.9rem;
+    color: #3b5998;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  #registro-cognitivo-form .input-extra {
+    display: none;
+    margin-top: 0.75rem;
+  }
+  
+  #registro-cognitivo-form textarea.form-control {
+    border-radius: 0.75rem;
+    resize: none;
+  }
+  
+  #registro-cognitivo-form .form-label {
+    font-weight: 500;
+  }
+  
+  #registro-cognitivo-form .btn-submit {
+    background-color: #3b5998;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    font-weight: 600;
+    margin-top: 1.5rem;
+  }
