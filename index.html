@@ -8,31 +8,30 @@
     <title>Âncora</title>
 </head>
 <body class="container-fluid">
-    <main class="d-inline-flex align-items-center">
+    <main class="d-inline-flex">
         <section class="col-md-8 w-50 p-3">
             <div class="infos">
-                <fieldset>
+                <fieldset >
                     <legend>Informações do paciente</legend>
-                    <div class="row row-no-gutters">
-                        <div class="col-sm-3"><img src="./imagens/homem.jpeg" alt="John Doe" width="150"></div>
-                        <div class="col-xs-6">
                             <h2>John Doe</h2>
-                            <form action="post">
-                                <label for="nome">Idade: </label>
-                                <input name="nome" type="number" value="23" min="0" max="100" readonly><br>
-                                <label for="sexo">Sexo: </label>
-                                <input name="sexo" type="text" value="Homem" readonly><br>
-                                <label for="profis">Profissão: </label>
-                                <input name="profis" type="text" value="Cozinheiro"readonly><br>
-                        </div>
-                    </div>
+                    <form action="post">
+                        <label for="nome">Idade: </label>
+                        <input class="form-control input-sm" name="nome" type="number" value="23" min="0" max="100" readonly><br>
+                        <label for="sexo">Sexo: </label>
+                        <input class="form-control input-sm" name="sexo" type="text" value="Homem" readonly><br>
+                        <label for="profis">Profissão: </label>
+                        <input class="form-control input-sm" name="profis" type="text" value="Cozinheiro"readonly><br>
                     <div>
                         <fieldset>
                             <legend>Contatos:</legend>
-                            <label for="contato1">Contato 1: </label>
-                            <input name="contato1" type="text" value="+55 44 997456789 (Esposa)" readonly><br>
-                            <label for="contato2">Contato 2: </label>
-                            <input name="contato2" type="text" value="+55 44 993286789 (Irmão)" readonly><br>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                  <input name="contato1" type="text" class="form-control" value="+55 44 997456789 (Esposa)" readonly>
+                                </div>
+                                <div class="col-xs-3">
+                                  <input name="contato2" type="text" class="form-control" value="+55 44 993286789 (Irmão)" readonly>
+                                </div>
+                              </div>
                         </fieldset>
                     </div>
                 </fieldset>
@@ -42,32 +41,32 @@
         </section>
         <section class="historico col-md-8 w-50 p-3">
             <h2>Histórico</h2>
-            <table>
-                <tr>
+            <table  class="table table-striped table-bordered table-hover">
+                <tr class="thead-dark">
                     <th>Médico</th>
                     <th>Duração</th>
                     <th>Registro cognitivo</th>
                     <th>Data</th>
                 </tr>
-                <tr>
+                <tr class="thead-dark">
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
+                <tr class="thead-dark">
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
+                <tr class="thead-dark">
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
+                <tr class="thead-dark">
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
