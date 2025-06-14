@@ -25,57 +25,36 @@
                             <legend class="tituloSecao">Como poderia lidar agora?</legend>
 
                             <div class="form-group">
-                                <label for="pensamentos">“Tenho um problema a se resolver?</label>
-                                <textarea class="form-control" id="pensamentos" name="pensamentos" rows="3"></textarea>
+                                <label for="pensamentos">Tenho um problema a se resolver?</label>
+                                <textarea class="form-control" id="pensamentos" name="pensamentos" rows="3"
+                                    placeholder="Digite possíveis soluções" required></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="descricao_momento">Descreva o momento que isso começou, onde estava, o que
-                                    aconteceu</label>
-                                <textarea class="form-control" id="descricao_momento" name="descricao_momento"
-                                    rows="3"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Assinale as emoções que causaram esse alerta:</label>
-
+                                <label for="descricao_momento">Coisas que eu poderia fazer agora para me
+                                    distrair</label>
+                                <textarea class="form-control" id="descricao_momento" name="descricao_momento" rows="3" placeholder="Digite o que poderia ser feito"
+                                    required></textarea>
                                 <div class="checkbox-group">
-                                    <label><input type="checkbox" name="sinais[]" value="fisicos"> Sinais
-                                        físicos</label>
-                                    <label><input type="checkbox" name="sinais[]" value="sentimentos"> Sentimentos /
-                                        emoção
-                                        específicos</label>
-                                    <label><input type="checkbox" name="sinais[]" value="frustracao"> Frustração /
-                                        expectativas</label>
-                                    <label><input type="checkbox" name="sinais[]" value="tristeza"> Tristeza / humor
-                                        negativo</label>
-                                    <label><input type="checkbox" name="sinais[]" value="medo"> Medo / ataque de
-                                        pânico</label>
-                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">
-                                        Irritabilidade</label>
-                                    <label><input type="checkbox" name="sinais[]" value="repetitivos"> Pensamentos
-                                        repetitivos ou fora do meu domínio</label>
-                                    <label><input type="checkbox" name="sinais[]" value="agressividade">
-                                        Agressividade</label>
-                                    <label><input type="checkbox" name="sinais[]" value="fisiologica"> Alteração
-                                        fisiológica
-                                        / sono / apetite / cansaço</label>
-                                    <label><input type="checkbox" name="sinais[]" value="substancia"> Uso de substância
-                                        ou
-                                        abstinência</label>
-                                    <label><input type="checkbox" name="sinais[]" value="relacionamento"> Problemas de
-                                        relacionamento</label>
-                                    <label>
-                                        <input type="checkbox" name="sinais[]" value="outros"> Outros:
-                                        <input type="text" name="texto_outros" id="texto_outros" placeholder="Descreva">
-                                    </label>
+                                    <label>Sugestões:</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisicos">Ouvir músicas</label>
+                                    <label><input type="checkbox" name="sinais[]" value="sentimentos">Limpar</label>
+                                    <label><input type="checkbox" name="sinais[]" value="frustracao">Pintar</label>
+                                    <label><input type="checkbox" name="sinais[]" value="tristeza">Ler um livro</label>
+                                    <label><input type="checkbox" name="sinais[]" value="medo">Ler um cartão lembrete (escreva algo positivo)</label>
+                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">Procurar aprender algo de um assunto que desconheço</label>
+                                    <label><input type="checkbox" name="sinais[]" value="repetitivos">Ler ou assistir algo sobre a minha religião</label>
+                                    <label><input type="checkbox" name="sinais[]" value="agressividade">Dar uma volta na quadra e voltar</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisiologica">Fazer um passeio sozinho</label>
+                                    <label><input type="checkbox" name="sinais[]" value="substancia">Tirar fotos de algo que acho belo na natureza</label>
+                                    <label><input type="checkbox" name="sinais[]" value="relacionamento">Jogar um jogo que eu goste</label>
+                                    <label><input type="checkbox" name="sinais[]" value="podcast">Ouvir podcast de assunto que desconheço</label>
                                 </div>
                             </div>
 
                             <nav aria-label="Navegação">
                                 <ul class="pagination justify-content-end">
-                                    <li class="page-item disabled"><a href="#" class="page-link" id="prevPage"
-                                            aria-disabled="true">Anterior</a></li>
+                                    <li class="page-item"><a href="#" class="page-link" id="prevPage">Anterior</a></li>
                                     <li class="page-item">
                                         <a class="page-link" href="#" id="nextPage">Próxima</a>
                                     </li>
@@ -97,10 +76,7 @@
 
             const pensamentos = document.getElementById('pensamentos').value.trim();
             const descricao = document.getElementById('descricao_momento').value.trim();
-            const checkboxes = document.querySelectorAll('input[name="sinais[]"]:checked');
-            const outros = document.getElementById('texto_outros').value.trim();
-            const outrosCheckbox = document.querySelector('input[name="sinais[]"][value="outros"]').checked;
-
+            
             let valid = true;
             let mensagens = [];
 
@@ -113,21 +89,17 @@
                 valid = false;
                 mensagens.push("Preencha o campo 'Descrição do momento'.");
             }
-
-            if (checkboxes.length === 0) {
-                valid = false;
-                mensagens.push("Selecione pelo menos uma opção nas emoções.");
-            }
-
-            if (outrosCheckbox && !outros) {
-                valid = false;
-                mensagens.push("Preencha o campo 'Outros' ou desmarque a opção.");
-            }
+            
             if (valid) {
                 window.location.href = "plano2.html";
             } else {
                 alert(mensagens.join("\n"));
             }
+        });
+
+        document.getElementById('prevPage').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = "plano.html";        
         });
 
         async function loadTemplate(id, file) {
