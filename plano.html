@@ -14,85 +14,128 @@
 
 <body class="plano">
     <div id="template-header"></div>
-    <div id="template-sidebar"></div>
+    <!--<div id="template-sidebar"></div>-->
+    <div class="container-fluid d-flex justify-content-center align-items-center p-0">
+        <main class="mainPlano">
+            <h1 id="titulo">Plano de Segurança</h1>
+            <section>
+                <div class="pg_plano">
+                    <form action="" method="get">
+                        <fieldset>
+                            <legend class="tituloSecao">Sinais de Alarme</legend>
 
-    <main>
-        <h1 id="titulo">Plano de Segurança</h1>
-        <section>
-            <div class="pg_plano">
-                <form action="plano2.html" method="get">
-                    <fieldset>
-                        <legend class="tituloSecao">Sinais de Alarme</legend><br>
-                        <div class="form-group">
-                            <label for="pensamentos">Digite pensamentos, sentimentos, comportamentos que
-                                levaram a iniciar o plano de segurança.</label>
-                            <textarea class="form-control" id="pensamentos" rows="3"></textarea>
-                        </div><br>
+                            <div class="form-group">
+                                <label for="pensamentos">Digite pensamentos, sentimentos, comportamentos que
+                                    levaram a iniciar o plano de segurança.</label>
+                                <textarea class="form-control" id="pensamentos" name="pensamentos" rows="3"></textarea>
+                            </div>
 
-                        <label for="">Descreva o momento que isso começou, onde estava, o que
-                            aconteceu</label> <br>
+                            <div class="form-group">
+                                <label for="descricao_momento">Descreva o momento que isso começou, onde estava, o que
+                                    aconteceu</label>
+                                <textarea class="form-control" id="descricao_momento" name="descricao_momento"
+                                    rows="3"></textarea>
+                            </div>
 
+                            <div class="form-group">
+                                <label>Assinale as emoções que causaram esse alerta:</label>
 
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="sinais[]" value="fisicos"> Sinais
+                                        físicos</label>
+                                    <label><input type="checkbox" name="sinais[]" value="sentimentos"> Sentimentos /
+                                        emoção
+                                        específicos</label>
+                                    <label><input type="checkbox" name="sinais[]" value="frustracao"> Frustração /
+                                        expectativas</label>
+                                    <label><input type="checkbox" name="sinais[]" value="tristeza"> Tristeza / humor
+                                        negativo</label>
+                                    <label><input type="checkbox" name="sinais[]" value="medo"> Medo / ataque de
+                                        pânico</label>
+                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">
+                                        Irritabilidade</label>
+                                    <label><input type="checkbox" name="sinais[]" value="repetitivos"> Pensamentos
+                                        repetitivos ou fora do meu domínio</label>
+                                    <label><input type="checkbox" name="sinais[]" value="agressividade">
+                                        Agressividade</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisiologica"> Alteração
+                                        fisiológica
+                                        / sono / apetite / cansaço</label>
+                                    <label><input type="checkbox" name="sinais[]" value="substancia"> Uso de substância
+                                        ou
+                                        abstinência</label>
+                                    <label><input type="checkbox" name="sinais[]" value="relacionamento"> Problemas de
+                                        relacionamento</label>
+                                    <label>
+                                        <input type="checkbox" name="sinais[]" value="outros"> Outros:
+                                        <input type="text" name="texto_outros" id="texto_outros" placeholder="Descreva">
+                                    </label>
+                                </div>
+                            </div>
 
-                        <label for="">Assinale as emoções que causaram esse alerta</label><br>
+                            <nav aria-label="Navegação">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item disabled"><a href="#" class="page-link" id="prevPage"
+                                            aria-disabled="true">Anterior</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" id="nextPage">Próxima</a>
+                                    </li>
+                                </ul>
+                            </nav>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" class="form-check-label" for="defaultCheck1">
-                                Default checkbox
-                            </label>
-                        </div>
+                        </fieldset>
+                    </form>
 
-                        <input class="form-check-input" type="checkbox" value="" name="fisicos">
-                        <label class="form-check-label" for="fisicos">Sinais físicos</label> <br>
-                        <input class="form-check-input" type="checkbox" value="" name="sentimentos">
-                        <label class="form-check-label" for="sentimentos">Sentimentos /emoçõe específicos</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="frustação">
-                        <label class="form-check-label" for="frustação">Frustração / expectativas</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="tristeza"> <label
-                            class="form-check-label" for="tristeza">Tristeza / humor negativo</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="medo"> <label
-                            class="form-check-label" for="medo">Medo / ataque de pânico</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="irritabilidade"> <label
-                            class="form-check-label" for="irritabilidade">Irritabilidade</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="repetitivos"> <label
-                            class="form-check-label" for="repetitivos">Pensamentos repetitivos ou
-                            fora do meu domínio</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="agressividade"> <label
-                            class="form-check-label" for="agressividade">Agressividade</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="fisiologica"> <label
-                            class="form-check-label" for="fisiologica"> Alteração fisiológica /
-                            sono / apetite / cansaço</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="substancia"> <label
-                            class="form-check-label" for="substancia">Uso de substância ou
-                            abstinência</label><br>
-                        <input class="form-check-input" type="checkbox" value="" name="relacionamento"> <label
-                            class="form-check-label" for="relacionamento">Problemas de
-                            relacionamento</label><br>
-                        <label class="form-check-label" for="opcao_outros">
-                            <input class="form-check-input" type="checkbox" value="" id="opcao_outros" name="opcoes[]"
-                                value="outros"> Outros:
-                        </label>
-                        <input type="text" id="texto_outros" name="texto_outros"><br>
-
-
-
-
-
-                        <button type="button" class="btn btn-primary" id="submit">Primary</button>
-                    </fieldset>
-                </form>
-            </div>
-        </section>
-    </main>
+                </div>
+            </section>
+        </main>
+    </div>
     <div id="template-footer"></div>
 
     <script>
+        document.getElementById('nextPage').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const pensamentos = document.getElementById('pensamentos').value.trim();
+            const descricao = document.getElementById('descricao_momento').value.trim();
+            const checkboxes = document.querySelectorAll('input[name="sinais[]"]:checked');
+            const outros = document.getElementById('texto_outros').value.trim();
+            const outrosCheckbox = document.querySelector('input[name="sinais[]"][value="outros"]').checked;
+
+            let valid = true;
+            let mensagens = [];
+
+            if (!pensamentos) {
+                valid = false;
+                mensagens.push("Preencha o campo 'Pensamentos, sentimentos, comportamentos'.");
+            }
+
+            if (!descricao) {
+                valid = false;
+                mensagens.push("Preencha o campo 'Descrição do momento'.");
+            }
+
+            if (checkboxes.length === 0) {
+                valid = false;
+                mensagens.push("Selecione pelo menos uma opção nas emoções.");
+            }
+
+            if (outrosCheckbox && !outros) {
+                valid = false;
+                mensagens.push("Preencha o campo 'Outros' ou desmarque a opção.");
+            }
+            if (valid) {
+                window.location.href = "plano2.html";
+            } else {
+                alert(mensagens.join("\n"));
+            }
+        });
+
         async function loadTemplate(id, file) {
             const res = await fetch(file);
             const html = await res.text();
             document.getElementById(id).innerHTML = html;
-        } 
+        }
         loadTemplate('template-header', '_header.html');
         loadTemplate('template-sidebar', '_sidebar.html');
         loadTemplate('template-footer', '_footer.html');
