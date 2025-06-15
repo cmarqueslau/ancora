@@ -4,19 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Âncora</title>
+    <title>Plano de Segurança</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="imagens/anchor.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         crossorigin="anonymous">
-
 </head>
 
 <body class="plano">
     <div id="template-header"></div>
-    
+
     <div class="container-fluid d-flex p-0">
-    <div id="template-sidebar"></div>
+        <div id="template-sidebar"></div>
         <main class="mainPlano">
             <h1 id="titulo">Plano de Segurança</h1>
             <section>
@@ -42,31 +41,17 @@
                                 <label>Assinale as emoções que causaram esse alerta:</label>
 
                                 <div class="checkbox-group">
-                                    <label><input type="checkbox" name="sinais[]" value="fisicos"> Sinais
-                                        físicos</label>
-                                    <label><input type="checkbox" name="sinais[]" value="sentimentos"> Sentimentos /
-                                        emoção
-                                        específicos</label>
-                                    <label><input type="checkbox" name="sinais[]" value="frustracao"> Frustração /
-                                        expectativas</label>
-                                    <label><input type="checkbox" name="sinais[]" value="tristeza"> Tristeza / humor
-                                        negativo</label>
-                                    <label><input type="checkbox" name="sinais[]" value="medo"> Medo / ataque de
-                                        pânico</label>
-                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">
-                                        Irritabilidade</label>
-                                    <label><input type="checkbox" name="sinais[]" value="repetitivos"> Pensamentos
-                                        repetitivos ou fora do meu domínio</label>
-                                    <label><input type="checkbox" name="sinais[]" value="agressividade">
-                                        Agressividade</label>
-                                    <label><input type="checkbox" name="sinais[]" value="fisiologica"> Alteração
-                                        fisiológica
-                                        / sono / apetite / cansaço</label>
-                                    <label><input type="checkbox" name="sinais[]" value="substancia"> Uso de substância
-                                        ou
-                                        abstinência</label>
-                                    <label><input type="checkbox" name="sinais[]" value="relacionamento"> Problemas de
-                                        relacionamento</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisicos"> Sinais físicos</label>
+                                    <label><input type="checkbox" name="sinais[]" value="sentimentos"> Sentimentos / emoção específicos</label>
+                                    <label><input type="checkbox" name="sinais[]" value="frustracao"> Frustração / expectativas</label>
+                                    <label><input type="checkbox" name="sinais[]" value="tristeza"> Tristeza / humor negativo</label>
+                                    <label><input type="checkbox" name="sinais[]" value="medo"> Medo / ataque de pânico</label>
+                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade"> Irritabilidade</label>
+                                    <label><input type="checkbox" name="sinais[]" value="repetitivos"> Pensamentos repetitivos ou fora do meu domínio</label>
+                                    <label><input type="checkbox" name="sinais[]" value="agressividade"> Agressividade</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisiologica"> Alteração fisiológica / sono / apetite / cansaço</label>
+                                    <label><input type="checkbox" name="sinais[]" value="substancia"> Uso de substância ou abstinência</label>
+                                    <label><input type="checkbox" name="sinais[]" value="relacionamento"> Problemas de relacionamento</label>
                                     <label>
                                         <input type="checkbox" name="sinais[]" value="outros"> Outros:
                                         <input type="text" name="texto_outros" id="texto_outros" placeholder="Descreva">
@@ -86,7 +71,6 @@
 
                         </fieldset>
                     </form>
-
                 </div>
             </section>
         </main>
@@ -99,9 +83,11 @@
 
             const pensamentos = document.getElementById('pensamentos').value.trim();
             const descricao = document.getElementById('descricao_momento').value.trim();
-            const checkboxes = document.querySelectorAll('input[name="sinais[]"]:checked');
             const outros = document.getElementById('texto_outros').value.trim();
             const outrosCheckbox = document.querySelector('input[name="sinais[]"][value="outros"]').checked;
+
+            const checkboxes = Array.from(document.querySelectorAll('input[name="sinais[]"]:checked'))
+                .map(cb => cb.value);
 
             let valid = true;
             let mensagens = [];
@@ -125,13 +111,37 @@
                 valid = false;
                 mensagens.push("Preencha o campo 'Outros' ou desmarque a opção.");
             }
+
             if (valid) {
+                localStorage.setItem('pensamentos', pensamentos);
+                localStorage.setItem('descricao', descricao);
+                localStorage.setItem('checkboxes', JSON.stringify(checkboxes));
+                localStorage.setItem('outros', outros);
+
+                window.localStorage.setItem('fromPage1', 'true');
                 window.location.href = "plano2.html";
             } else {
                 alert(mensagens.join("\n"));
             }
         });
 
+        window.addEventListener('DOMContentLoaded', () => {
+            const pensamentos = localStorage.getItem('pensamentos');
+            const descricao = localStorage.getItem('descricao');
+            const checkboxes = JSON.parse(localStorage.getItem('checkboxes') || '[]');
+            const outros = localStorage.getItem('outros');
+
+            if (pensamentos) document.getElementById('pensamentos').value = pensamentos;
+            if (descricao) document.getElementById('descricao_momento').value = descricao;
+            if (outros) document.getElementById('texto_outros').value = outros;
+
+            checkboxes.forEach(value => {
+                const checkbox = document.querySelector(`input[name="sinais[]"][value="${value}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
+        });
+
+        // Carregar templates
         async function loadTemplate(id, file) {
             const res = await fetch(file);
             const html = await res.text();
@@ -140,17 +150,13 @@
         loadTemplate('template-header', '_header.html');
         loadTemplate('template-sidebar', '_sidebar.html');
         loadTemplate('template-footer', '_footer.html');
-
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaZT0I3EJrXAq8CC5RXUknUJ/"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
 </body>

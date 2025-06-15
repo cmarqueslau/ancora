@@ -19,30 +19,27 @@
 }
 
 .mainPlano {
-    margin-left: 80px;
-    transition: margin-left 0.3s;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centraliza horizontalmente */
+    padding: 10px;
 }
 
-.temp-sidebar.expanded ~ .mainPlano {
-    margin-left: 350px;
+/* Caixa do formulário */
+.pg_plano {
+    padding: 30px;
+    max-width: 700px;
+    width: 100%;
+    background-color: var(--cor2);
+    color: white;
+    border-radius: 20px;
 }
 
 .plano {
     background-color: var(--cor1);
 }
 
-.pg_plano {
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 600px;
-    background-color: var(--cor2);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-}
 .tituloSecao{
     font-family: 'Playfair Display';
     font-style: normal;

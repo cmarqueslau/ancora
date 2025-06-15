@@ -14,8 +14,8 @@
 
 <body class="plano">
     <div id="template-header"></div>
-    <div class="container-fluid d-flex justify-content-center align-items-center p-0">
-    <div id="template-sidebar"></div>
+    <div class="container-fluid d-flex p-0">
+        <div id="template-sidebar"></div>
         <main class="mainPlano">
             <h1 id="titulo">Plano de Segurança</h1>
             <section>
@@ -33,22 +33,30 @@
                             <div class="form-group">
                                 <label for="descricao_momento">Coisas que eu poderia fazer agora para me
                                     distrair</label>
-                                <textarea class="form-control" id="descricao_momento" name="descricao_momento" rows="3" placeholder="Digite o que poderia ser feito"
-                                    required></textarea>
+                                <textarea class="form-control" id="descricao_momento" name="descricao_momento" rows="3"
+                                    placeholder="Digite o que poderia ser feito" required></textarea>
                                 <div class="checkbox-group">
                                     <label>Sugestões:</label>
                                     <label><input type="checkbox" name="sinais[]" value="fisicos">Ouvir músicas</label>
                                     <label><input type="checkbox" name="sinais[]" value="sentimentos">Limpar</label>
                                     <label><input type="checkbox" name="sinais[]" value="frustracao">Pintar</label>
                                     <label><input type="checkbox" name="sinais[]" value="tristeza">Ler um livro</label>
-                                    <label><input type="checkbox" name="sinais[]" value="medo">Ler um cartão lembrete (escreva algo positivo)</label>
-                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">Procurar aprender algo de um assunto que desconheço</label>
-                                    <label><input type="checkbox" name="sinais[]" value="repetitivos">Ler ou assistir algo sobre a minha religião</label>
-                                    <label><input type="checkbox" name="sinais[]" value="agressividade">Dar uma volta na quadra e voltar</label>
-                                    <label><input type="checkbox" name="sinais[]" value="fisiologica">Fazer um passeio sozinho</label>
-                                    <label><input type="checkbox" name="sinais[]" value="substancia">Tirar fotos de algo que acho belo na natureza</label>
-                                    <label><input type="checkbox" name="sinais[]" value="relacionamento">Jogar um jogo que eu goste</label>
-                                    <label><input type="checkbox" name="sinais[]" value="podcast">Ouvir podcast de assunto que desconheço</label>
+                                    <label><input type="checkbox" name="sinais[]" value="medo">Ler um cartão lembrete
+                                        (escreva algo positivo)</label>
+                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">Procurar
+                                        aprender algo de um assunto que desconheço</label>
+                                    <label><input type="checkbox" name="sinais[]" value="repetitivos">Ler ou assistir
+                                        algo sobre a minha religião</label>
+                                    <label><input type="checkbox" name="sinais[]" value="agressividade">Dar uma volta na
+                                        quadra e voltar</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisiologica">Fazer um passeio
+                                        sozinho</label>
+                                    <label><input type="checkbox" name="sinais[]" value="substancia">Tirar fotos de algo
+                                        que acho belo na natureza</label>
+                                    <label><input type="checkbox" name="sinais[]" value="relacionamento">Jogar um jogo
+                                        que eu goste</label>
+                                    <label><input type="checkbox" name="sinais[]" value="podcast">Ouvir podcast de
+                                        assunto que desconheço</label>
                                 </div>
                             </div>
 
@@ -76,22 +84,29 @@
 
             const pensamentos = document.getElementById('pensamentos').value.trim();
             const descricao = document.getElementById('descricao_momento').value.trim();
-            
+            const checkboxes = document.querySelectorAll('input[name="sinais[]"]:checked');
+
+            const sinaisMarcados = Array.from(checkboxes).map(cb => cb.value);
+
             let valid = true;
             let mensagens = [];
 
             if (!pensamentos) {
                 valid = false;
-                mensagens.push("Preencha o campo 'Pensamentos, sentimentos, comportamentos'.");
+                mensagens.push("Preencha o campo 'Tenho um problema a se resolver?'.");
             }
 
             if (!descricao) {
                 valid = false;
-                mensagens.push("Preencha o campo 'Descrição do momento'.");
+                mensagens.push("Preencha o campo 'Coisas que eu poderia fazer agora para me distrair'.");
             }
-            
+
             if (valid) {
-                window.location.href = "plano2.html";
+                localStorage.setItem('pensamentos', pensamentos);
+                localStorage.setItem('descricao', descricao);
+                localStorage.setItem('sinais', JSON.stringify(sinaisMarcados));
+
+                window.location.href = "plano2.html"; // Próxima página
             } else {
                 alert(mensagens.join("\n"));
             }
@@ -99,8 +114,37 @@
 
         document.getElementById('prevPage').addEventListener('click', function (e) {
             e.preventDefault();
-            window.location.href = "plano.html";        
+            window.location.href = "plano.html";
         });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const fromPage1 = localStorage.getItem('fromPage1');
+
+            if (fromPage1 === 'true') {
+                document.getElementById('pensamentos').value = '';
+                document.getElementById('descricao_momento').value = '';
+
+                const checkboxes = document.querySelectorAll('input[name="sinais[]"]');
+                checkboxes.forEach(cb => cb.checked = false);
+
+                localStorage.removeItem('fromPage1');
+            } else {
+                const pensamentos = localStorage.getItem('pensamentos');
+                const descricao = localStorage.getItem('descricao');
+                const sinais = JSON.parse(localStorage.getItem('sinais')) || [];
+
+                if (pensamentos) document.getElementById('pensamentos').value = pensamentos;
+                if (descricao) document.getElementById('descricao_momento').value = descricao;
+
+                sinais.forEach(valor => {
+                    const checkbox = document.querySelector(`input[name="sinais[]"][value="${valor}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        });
+
 
         async function loadTemplate(id, file) {
             const res = await fetch(file);
@@ -110,7 +154,6 @@
         loadTemplate('template-header', '_header.html');
         loadTemplate('template-sidebar', '_sidebar.html');
         loadTemplate('template-footer', '_footer.html');
-
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
