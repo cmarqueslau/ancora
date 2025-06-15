@@ -295,15 +295,15 @@
   
   /* --- Registro Cognitivo --- */
   
-  body.registro-cognitivo {
+  body.registro-cognitivo{
     background-color: #f4f9fc;
     color: #2c3e50;
     font-family: 'Nunito Sans', sans-serif;
   }
   
-  #registro-cognitivo-form .section-title {
+.section-title { /* --- estou tentando padronizar --- */
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1rem;
     color: #3b5998;
   }
@@ -367,4 +367,32 @@
     border: none;
     font-weight: 600;
     margin-top: 1.5rem;
+  }
+
+  #btn_primary .btn{
+    background-color: #3b5998;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    font-weight: 600;
+    margin-top: 1.5rem;
+  }
+
+main.primary_page{
+  background-color: #f4f9fc;
+}
+fieldset{
+  background-color: white;
+}
+
+table, thead th, tbody td {
+  text-align: center;
+  vertical-align: middle; /* para centralizar verticalmente também */
+}
+
+ thead th {
+    background-color: #3b5998;
+    color: white;
+    text-align: center;
   }
