@@ -126,7 +126,8 @@
 .temp-header {
     background-color: var(--temp-card-bg);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
   }
@@ -165,7 +166,7 @@
     height: calc(100vh - 70px);
     background-color: var(--temp-card-bg);
     transition: all 0.3s ease;
-    position: sticky;
+    position: fixed;
     top: 70px;
     display: flex;
     flex-direction: column;
