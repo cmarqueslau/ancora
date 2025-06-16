@@ -1,10 +1,10 @@
 function toggleSidebar() {
-    const sidebar = document.getElementsByClassName('temp-sidebar');
-    const btn = document.getElementById('temp-sidebar-btn');
+    const sidebar = $('.temp-sidebar');
+    const btn = $('#temp-sidebar-btn');
     
     sidebar.toggleClass('expanded');
     
-    if (sidebar.classList.contains('expanded')) {
+    if (sidebar.hasClass('expanded')) {
         btn.html('<i class="fas fa-times"></i>');
         btn.css('margin-left', 'auto');
     } else {
@@ -13,8 +13,9 @@ function toggleSidebar() {
     }
 }
 
-document.getElementById("temp-sidebar-btn").addEventListener("click", (e) => {
-    console.log("toggle!");
-    toggleSidebar();
-}); 
 
+$(document).ready(function(){
+    $("#temp-sidebar-btn").on("click", function(){
+       toggleSidebar();
+    }); 
+});
