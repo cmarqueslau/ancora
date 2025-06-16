@@ -2,11 +2,11 @@
 
 
 :root {
-    --cor1: rgb(146, 191, 177);
-    --cor2: rgb(30, 45, 36);
-    --cor3: rgb(202, 144, 126);
-    --cor4: rgb(153, 70, 54);
-    --cor5: rgb(100, 66, 22);
+    --cor1: #d0d8dd;
+    --cor2: #05387c;
+    --cor3: #6BA5FF;
+    --cor4: #11386C;
+    --cor5: #2A5998;
 
     /* essas variáveis são temporárias, depois eu adequo certinho */
     --temp-primary: #1b4b8a;
@@ -19,17 +19,16 @@
 }
 /* plano de segurança*/
 .mainPlano {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* Centraliza horizontalmente */
-    padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 10px;
 }
 
-/* Caixa do formulário */
 .pg_plano {
     padding: 30px;
-    max-width: 700px;
+    max-width: 1200px;
     width: 100%;
     background-color: var(--cor2);
     color: white;
@@ -48,16 +47,14 @@
 
 #titulo{
     max-width: 300px;
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 700;
+    color: var(--cor4);
     font-size: 25px;
-    color: white;
     text-align: center;
     margin: 20px auto;
     padding: 20px;
     padding-bottom: 0px;
 }
+
 .pg_plano form fieldset label,
 .pg_plano form fieldset input {
     margin: 10px;
@@ -116,10 +113,6 @@
     opacity: 0.6;
 }
 
-#inputGrande{
-    width: 300px;
-    height: 200px;
-}
 /*Fim do Plano de segurança*/
 
 /* Header */
