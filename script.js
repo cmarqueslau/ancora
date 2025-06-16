@@ -14,8 +14,6 @@ function toggleSidebar() {
 }
 
 
-$(document).ready(function(){
-    $("#temp-sidebar-btn").on("click", function(){
-       toggleSidebar();
-    }); 
+$(document).on("click","#temp-sidebar-btn",function() {
+    toggleSidebar();
 });
