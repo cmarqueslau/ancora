@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center; 
-  padding: 10px;
+  margin-top: 80px;
 }
 
 .pg_plano {
@@ -39,12 +39,6 @@
     background-color: var(--cor1);
 }
 
-.tituloSecao{
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 700;
-}
-
 #titulo{
     max-width: 300px;
     color: var(--cor4);
@@ -53,8 +47,15 @@
     margin: 20px auto;
     padding: 20px;
     padding-bottom: 0px;
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
 }
-
+.tituloSecao{
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+}
 .pg_plano form fieldset label,
 .pg_plano form fieldset input {
     margin: 10px;
