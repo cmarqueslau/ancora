@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         crossorigin="anonymous">
+
 </head>
 
 <body class="plano">
@@ -23,41 +24,46 @@
                 <div class="pg_plano">
                     <form action="" method="get">
                         <fieldset>
-                            <legend class="tituloSecao">Como poderia lidar agora?</legend>
+                            <legend class="tituloSecao">Encontre lugares ou pessoas onde tire o foco do pensamento
+                                negativo</legend>
 
                             <div class="form-group">
-                                <label for="pensamentos">Tenho um problema a se resolver?</label>
+                                <label for="pensamentos">Distrações sociais - Lugares</label>
                                 <textarea class="form-control" id="pensamentos" name="pensamentos" rows="3"
-                                    placeholder="Digite possíveis soluções" required></textarea>
+                                    placeholder="Digite possíveis lugares para ir" required></textarea>
+                                <div class="checkbox-group">
+                                    <label>Sugestões:</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisicos">Ir a um parque</label>
+                                    <label><input type="checkbox" name="sinais[]" value="sentimentos">Procurar um lugar
+                                        com natureza</label>
+                                    <label><input type="checkbox" name="sinais[]" value="frustracao">Atividade
+                                        física</label>
+                                    <label><input type="checkbox" name="sinais[]" value="tristeza">Passeio com animal de
+                                        estimação</label>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="descricao_momento">Coisas que eu poderia fazer agora para me
-                                    distrair</label>
+                                <label for="descricao_momento">Distrações sociais - Pessoas</label> <br>
+                                <label for="descricao_momento">Posso ligar, mandar mensagem ou me encontrar com quem?
+                                    Quais assuntos poderíamos conversar?</label>
                                 <textarea class="form-control" id="descricao_momento" name="descricao_momento" rows="3"
-                                    placeholder="Digite o que poderia ser feito" required></textarea>
+                                    placeholder="Digite para quem seria possivel conversar" required></textarea>
                                 <div class="checkbox-group">
                                     <label>Sugestões:</label>
-                                    <label><input type="checkbox" name="sinais[]" value="fisicos">Ouvir músicas</label>
-                                    <label><input type="checkbox" name="sinais[]" value="sentimentos">Limpar</label>
-                                    <label><input type="checkbox" name="sinais[]" value="frustracao">Pintar</label>
-                                    <label><input type="checkbox" name="sinais[]" value="tristeza">Ler um livro</label>
-                                    <label><input type="checkbox" name="sinais[]" value="medo">Ler um cartão lembrete
-                                        (escreva algo positivo)</label>
-                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">Procurar
-                                        aprender algo de um assunto que desconheço</label>
-                                    <label><input type="checkbox" name="sinais[]" value="repetitivos">Ler ou assistir
-                                        algo sobre a minha religião</label>
-                                    <label><input type="checkbox" name="sinais[]" value="agressividade">Dar uma volta na
-                                        quadra e voltar</label>
-                                    <label><input type="checkbox" name="sinais[]" value="fisiologica">Fazer um passeio
-                                        sozinho</label>
-                                    <label><input type="checkbox" name="sinais[]" value="substancia">Tirar fotos de algo
-                                        que acho belo na natureza</label>
-                                    <label><input type="checkbox" name="sinais[]" value="relacionamento">Jogar um jogo
-                                        que eu goste</label>
-                                    <label><input type="checkbox" name="sinais[]" value="podcast">Ouvir podcast de
-                                        assunto que desconheço</label>
+                                    <label><input type="checkbox" name="sinais[]" value="fisicos">Conversar com colegas
+                                        de trabalho / estudo</label>
+                                    <label><input type="checkbox" name="sinais[]" value="sentimentos">Mensagem a um
+                                        amigo</label>
+                                    <label><input type="checkbox" name="sinais[]" value="frustracao">Encontrar com um
+                                        amigo</label>
+                                    <label><input type="checkbox" name="sinais[]" value="tristeza"> Ligação a um
+                                        familiar para saber como ele está</label>
+                                    <label><input type="checkbox" name="sinais[]" value="medo">Grupos de interesse em
+                                        comum: time, jogo, esporte, comunidades que participo</label>
+                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">Fazer algo que
+                                        estou adiando a muito tempo [ir ao banco, resolver algo fácil
+                                        pendente</label>
                                 </div>
                             </div>
 
@@ -106,7 +112,7 @@
                 localStorage.setItem('descricao', descricao);
                 localStorage.setItem('sinais', JSON.stringify(sinaisMarcados));
 
-                window.location.href = "plano3.html";
+                window.location.href = "plano4.html";
             } else {
                 alert(mensagens.join("\n"));
             }
@@ -114,7 +120,7 @@
 
         document.getElementById('prevPage').addEventListener('click', function (e) {
             e.preventDefault();
-            window.location.href = "plano.html";
+            window.location.href = "plano2.html";
         });
 
         window.addEventListener('DOMContentLoaded', () => {
