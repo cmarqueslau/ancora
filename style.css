@@ -250,6 +250,10 @@
     margin: 0 25px;
   }
   
+.containerDados{
+  margin-top: 80px;
+}
+
   .temp-content {
     padding: 30px;
     flex-grow: 1;
@@ -354,14 +358,34 @@
     font-weight: 500;
   }
   
-  #registro-cognitivo-form .btn-submit {
-    background-color: #3b5998;
-    color: white;
+  #registro-cognitivo-form .btn-final{
     padding: 0.75rem 2rem;
     border-radius: 2rem;
     border: none;
     font-weight: 600;
     margin-top: 1.5rem;
+  }
+
+  #registro-cognitivo-form .btn-submit {
+    background-color: #3b5998;
+    color: white;
+  }
+
+  #registro-cognitivo-form .btn-submit:hover {
+    background-color: #223868;
+    color: rgb(223, 237, 250);
+    font-weight: bold;
+  }
+
+  #registro-cognitivo-form .btn-cancel {
+    background-color: #707172;
+    color: white;
+  }
+
+  #registro-cognitivo-form .btn-cancel:hover {
+    background-color: #474747;
+    color: rgb(234, 236, 238);
+    font-weight: bold;
   }
 
   #btn_primary .btn{
