@@ -17,7 +17,7 @@
     --temp-card-bg: #dfe7ec;
     --temp-border-radius: 12px;
 }
-
+/* plano de segurança*/
 .mainPlano {
     flex-grow: 1;
     display: flex;
@@ -116,11 +116,11 @@
     opacity: 0.6;
 }
 
-
 #inputGrande{
     width: 300px;
     height: 200px;
 }
+/*Fim do Plano de segurança*/
 
 /* Header */
 .temp-header {
