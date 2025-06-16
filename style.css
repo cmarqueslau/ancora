@@ -379,10 +379,14 @@
     margin-top: 1.5rem;
   }
 
+  #btn_primary span{
+    color: #2c3e50;
+  }
+
 main.primary_page{
   background-color: #f4f9fc;
 }
-fieldset{
+.primary_page fieldset{
   background-color: white;
 }
 

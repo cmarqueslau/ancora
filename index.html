@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         crossorigin="anonymous">
-    <title>Âncora</title>
+        <title>Âncora</title>
 </head>
 
 <body class="container-fluid">
@@ -58,13 +58,40 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center" id="btn_primary">
-                            <div class="col-md-12">
-                                <a href="./registro.html" class="btn d-inline-flex align-items-center gap-2">Iniciar registro cognitivo <i
-                                        class="fa-regular fa-face-smile fa-2x ml-2"></i></a>
+                        <div class="col" id="btn_primary">
+                            <div class="d-flex align-items-center justify-content-center mb-4">
+                                <a href="./registro.html"
+                                    class="btn d-flex align-items-center justify-content-center">Iniciar
+                                    registro cognitivo <i class="fa-regular fa-face-smile fa-2x ml-2"></i></a>
                             </div>
-                            <div></div>
-                            <div></div>
+                            <div class="d-flex flex-column align-items-center mb-3">
+                                <span class="font-weight-bold">Plano de segurança</span>
+                                <div class="d-flex justify-content-center">
+                                    <a href="./plano.html"
+                                        class="btn d-flex align-items-center justify-content-center mr-2 mb-3"><i
+                                            class="fa-solid fa-plus ml-2"></i></a>
+                                    <a href="./plano.html"
+                                        class="btn d-flex align-items-center justify-content-center mr-2 mb-3"><i
+                                            class="fa-solid fa-pen-to-square ml-2"></i></a>
+                                    <a href="./plano.html"
+                                        class="btn d-flex align-items-center justify-content-center mb-3"><i
+                                            class="fa-solid fa-print ml-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <span class="font-weight-bold">Motivos para viver</span>
+                                <div class="d-flex justify-content-center">
+                                    <a href="./motivos.html"
+                                        class="btn d-flex align-items-center justify-content-center mr-2 mb-3"><i
+                                            class="fa-solid fa-plus ml-2"></i></a>
+                                    <a href="./motivos.html"
+                                        class="btn d-flex align-items-center justify-content-center mr-2 mb-3"><i
+                                            class="fa-solid fa-pen-to-square ml-2"></i></a>
+                                    <a href="./motivos.html"
+                                        class="btn d-flex align-items-center justify-content-center mb-3"><i
+                                            class="fa-solid fa-print ml-2"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -126,7 +153,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
+    <script src="script.js"></script>
     <script>
         async function loadTemplate(id, file) {
             const res = await fetch(file);
