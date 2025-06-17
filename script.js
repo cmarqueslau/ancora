@@ -17,3 +17,7 @@ function toggleSidebar() {
 $(document).on("click","#temp-sidebar-btn",function() {
     toggleSidebar();
 });
+
+document.getElementById('btn-add-motivo').addEventListener('click', () => {
+  alert('Botão + clicado - aqui você pode implementar adicionar um motivo');
+});

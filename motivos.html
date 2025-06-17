@@ -1,245 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Âncora</title>
-    <link rel="icon" type="image/x-icon" href="imagens/anchor.png">
-
-    <link rel="icon" type="image/png" href="imagens/ancora.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <style>
-        html, body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-        }
-
-        .logo-container h1 {
-            margin-left: 15px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: #007bff;
-        }
-
-        .nav-links a {
-            margin-left: 20px;
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-
-        .sidebar {
-            width: 55px;
-            height: 80vh;
-            background-color: #e3f2fd;
-            transition: width 0.3s ease;
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-        }
-
-        .sidebar button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 45px;
-            height: 45px;
-            padding: 12px;
-            background-color: #d0e8ff;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #007bff;
-            transition: background-color 0.3s ease;
-        }
-
-        #motivos-btn, #contatos-btn {
-            margin: 10px;
-        }
-
-        .sidebar button:hover{
-            background-color: #b8dcfa;
-            cursor: pointer;
-        }
-
-        #sidebar-btn {
-            background-color: transparent;
-            border: none;
-            border-radius: 0;
-            margin: 10px 0;
-            padding: 10px;
-            color: #007bff;
-            font-size: 1.4rem;
-        }
-
-        #sidebar-btn:hover {
-            background-color: transparent;
-            cursor: pointer;
-        }
-
-        .sidebar.expanded {
-            width: 200px;
-        }
-
-        .conteudo {
-            padding: 20px;
-            background-color: #ffffff;
-            flex-grow: 1;
-            box-sizing: border-box;
-        }
-
-        .titulo-central {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .titulo-quadrado {
-            width: 200px;
-            height: 40px;
-            background-color: #d0e8ff;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            color: #007bff;
-            margin: 0 auto 10px;
-            margin-top: 10px;
-            font-size: 1.2rem;
-            user-select: none;
-        }
-
-        .container-cinza {
-            background-color: #e9ecef;
-            border-radius: 15px;
-            padding: 30px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .grid-quadrados {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .quadrado {
-            background-color: #dee2e6;
-            border-radius: 10px;
-            height: 150px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: background-color 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .quadrado:hover {
-            background-color: ced4da;
-        }
-
-        .quadrado i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #007bff;
-        }
-
-        .quadrado span {
-            font-weight: 500;
-        }
-
-        @media (max-width: 991px) {
-            .grid-quadrados {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Motivos para Viver</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/x-icon" href="imagens/anchor.png" />
 </head>
-<body>
 
-    <header class="py-1 px-3">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <div class="logo-container">
-                <img src="imagens/ancora.png" alt="Logotipo">
-                <!--arrumar a imagem-->
-                <h1>Âncora</h1>
-            </div>
-            <h2 class="titulo-quadrado">Motivos para viver</h2>
-            <nav class="nav-links">
-                <a href="#">
-                    <img src="imagens/pagina_inicial.png" alt="Página Inicial" style="width: 48px; height: 48px; border-radius: 50%;">
-                </a>
-                <a href="#">
-                    <img src="imagens/perfil.png" alt="Perfil" style="width: 36px; height:36px; border-radius: 50%;">
-                </a>
-            </nav>
-        </div>
-    </header>
+<body class="temp-body motivos-page">
+  <div id="template-header"></div>
 
-    <div class="container-fluid d-flex p-0">
-        <div class="sidebar d-flex flex-column align-items-center">
-            <button id="sidebar-btn" title="Expandir Menu">&#9776;</button>
-            <button id="motivos-btn" title="Expandir Menu">M</button>
-            <button id="contatos-btn" title="Expandir Menu">C</button>
+  <div class="container-fluid d-flex p-0 containerDados">
+    <div id="template-sidebar"></div>
+
+    <main class="container mb-4 mt-5">
+      <h1 class="text-center mb-4 fw-bold" style="color:#3b5998">Motivos para Viver</h1>
+
+      <h2 class="fw-semibold mb-4" style="color:#3b5998; text-align:left;">Paciente: John Doe</h2>
+
+      <div class="card-form motivos-grande">
+
+        <div class="motivo-pequeno d-flex align-items-center justify-content-center border rounded shadow-sm">
+          Família
         </div>
 
-        <main class="conteudo">
-            <h6 style="margin-bottom: 20px;">Paciente: </h6>
-            <div class="container-cinza">
-                <div class="grid-quadrados">
-                    <a href="#" class="quadrado">
-                        <i class="fas fa-heart"></i>
-                        <span>Família</span>
-                    </a>
-                    <a href="#" class="quadrado">
-                        <i class="fas fa-music"></i>
-                        <span>Natureza</span>
-                    </a>
-                    <a href="#" class="quadrado">
-                        <i class="fas fa-book"></i>
-                        <span>Estudar</span>
-                    </a>
-                </div>
-            </div>
-        </main>
-    </div>
+        <div class="motivo-pequeno d-flex align-items-center justify-content-center border rounded shadow-sm">
+          Natureza
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(function () {
-            $('#sidebar-btn').on('click', function () {
-                $('.sidebar').toggleClass('expanded');
-            });
-        });
+        <div class="motivo-pequeno d-flex align-items-center justify-content-center border rounded shadow-sm">
+          Aprender
+        </div>
+
+        <button id="btn-add-motivo" class="motivo-pequeno btn btn-outline-primary d-flex align-items-center justify-content-center fs-1 fw-bold">
+          +
+        </button>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+        async function loadTemplate(id, file) {
+            const res = await fetch(file);
+            const html = await res.text();
+            document.getElementById(id).innerHTML = html;
+        }
+        
+        loadTemplate('template-header', '_header.html');
+        loadTemplate('template-sidebar', '_sidebar.html');
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaZT0I3EJrXAq8CC5RXUknUJ/"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
