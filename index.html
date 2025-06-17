@@ -20,9 +20,16 @@
         <main class="flex-grow-1 p-5 primary_page mt-5">
             <fieldset class="infos border p-4 mb-5">
                 <legend class="w-auto px-2 section-title">Informações do paciente</legend>
-                <h2 class="mb-4">John Doe</h2>
-
-                <form method="post">
+                <div class="row">
+                    <h2 class="ml-4 mb-4">John Doe</h2>
+                    <div class="d-flex justify-content-center">
+                        <a onclick="editForm()" id="edit" class="btn d-flex align-items-center justify-content-center mr-2 mb-3"><i
+                            class="fa-solid fa-pen-to-square ml-2"></i></a>
+                        <a onclick="checkForm()" id="check" class="btn align-items-center justify-content-center mr-2 mb-3 d-none"><i
+                            class="fa-solid fa-check ml-2"></i></a>
+                    </div>
+                </div>
+                <form method="post" id="form">
                     <div class="row g-3 mb-3">
                         <div>
                             <div class="row g-3 mb-3">
@@ -151,17 +158,43 @@
         
         loadTemplate('template-header', '_header.html');
         loadTemplate('template-sidebar', '_sidebar.html');
+
+        const form = document.getElementById("form");
+        const inputs = form.querySelectorAll('input');
+        function editForm(){
+            console.log("Função editForm chamada!");
+            inputs.forEach(input => {
+            input.removeAttribute("readonly");
+            input.removeAttribute("disabled");
+            });
+            document.getElementById("edit").classList.remove("d-flex");
+            document.getElementById("edit").classList.add("d-none");
+            document.getElementById("check").classList.add("d-flex");
+            document.getElementById("check").classList.remove("d-none");
+        }
+
+        function checkForm() {
+            console.log("Função checkForm chamada!");
+            inputs.forEach(input => {
+            input.readOnly = true;
+            input.disabled = true;
+            });
+            document.getElementById("edit").classList.add("d-flex");
+            document.getElementById("edit").classList.remove("d-none");
+            document.getElementById("check").classList.remove("d-flex");
+            document.getElementById("check").classList.add("d-none");
+        }
         </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaZT0I3EJrXAq8CC5RXUknUJ/"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-<script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaZT0I3EJrXAq8CC5RXUknUJ/"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script src="script.js"></script>
 </body>
 
 
