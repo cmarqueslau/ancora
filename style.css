@@ -125,10 +125,12 @@
     top: 0;
     z-index: 1000;
   }
-  
-  .temp-logo-container {
+
+
+  .temp-logo-container a{
     display: flex;
     align-items: center;
+    text-decoration: none !important;
   }
   
   .temp-logo-container img {
@@ -350,7 +352,7 @@
     margin-top: 0.75rem;
   }
   
-  #registro-cognitivo-form textarea.form-control {
+  #registro-cognitivo-form textarea{
     border-radius: 0.75rem;
     resize: none;
   }
