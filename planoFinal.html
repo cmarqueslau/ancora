@@ -18,12 +18,12 @@
     <div class="container-fluid d-flex p-0">
         <div id="template-sidebar"></div>
         <main class="mainPlano">
-            <h1 id="titulo" class="tituloSecao">Plano de Segurança</h1>
+            <h1 id="titulo">Plano de Segurança</h1>
             <section>
-                <div class="pg_plano">
+                <div class="pg_plano w-100">
                     <h2 class="tituloSecao">Finalizar Plano de Segurança</h2>
                     <h4 style="margin: 10px;">Deseja revisar alguma das páginas?</h4>
-                    <div class="d-flex flex-column gap-2 w-100 m-4">
+                    <div class="d-flex flex-column gap-2 m-4">
                         <button class="btn btn-primary btn-plano" type="button">
                             <i class="fa-solid fa-pen-to-square mr-2"></i>
                             Revisar Página 1 - Sinais de Alarme
@@ -34,7 +34,7 @@
                         </button>
                         <button class="btn btn-primary btn-plano" type="button">
                             <i class="fa-solid fa-pen-to-square mr-2"></i>
-                            Revisar Página 3 - Encontre lugares ou pessoas onde tire o foco do pensamento negativo
+                            Revisar Página 3 - Encontre lugares ou pessoas
                         </button>
                     </div>
                     <p> Você está prestes a finalizar o seu Plano de Segurança. Certifique-se de que todas as seções
@@ -43,10 +43,26 @@
                     </p>
                     <form action="index.html" method="get">
                         <div class="form-group text-center">
-                            <button type="button" class="btn btn-primary" onclick="finalizarPlano()">Finalizar Plano de
+                            <button type="button" class="btn btn-primary" id="cancelar" onclick="cancelarPlano()"> <i class="fa-solid fa-ban mr-2"></i> Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="encerrar" onclick="finalizarPlano()"> <i class="fa-solid fa-floppy-disk mr-2"></i> Finalizar Plano de
                                 Segurança</button>
                         </div>
                     </form>
+
+                    <nav aria-label="Navegação">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a href="#" class="page-link" id="prevPage">
+                                    <i class="fa-solid fa-arrow-left mr-2"></i> Anterior</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link disable" href="#" id="nextPage" aria-disabled="true">
+                                    Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
                 </div>
             </section>
         </main>
@@ -68,6 +84,11 @@
 
     <script>
 
+        document.getElementById('prevPage').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = "plano3.html";
+        });
+
         function finalizarPlano() {
             $('#modalConcluido').modal('show');
 
@@ -82,6 +103,21 @@
 
                 window.location.href = "index.html";
             }, 1000);
+        }
+
+        function cancelarPlano() {
+
+            setTimeout(() => {
+                localStorage.removeItem('pensamentos');
+                localStorage.removeItem('descricao');
+                localStorage.removeItem('checkboxes');
+                localStorage.removeItem('outros');
+                localStorage.removeItem('fromPage1');
+                localStorage.removeItem('fromPage2');
+                localStorage.removeItem('fromPage3');
+
+                window.location.href = "index.html";
+            }, 500);
         }
 
         async function loadTemplate(id, file) {

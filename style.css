@@ -122,6 +122,29 @@
     margin-bottom: 10px;
 }
 
+#encerrar{
+  background-color: var(--cor3);
+  color: var(--cor4);
+  border: 1px solid;
+}
+#encerrar:hover{
+  background-color: var(--cor4);
+  color: white;
+  border: 1px solid;
+}
+
+
+#cancelar{
+  background-color: #B2323C;
+  color: white;
+  border: 1px solid;
+}
+#cancelar:hover{
+  background-color: var(--cor1);
+  color: #99232E;
+  border: 1px solid;
+}
+
 /*Fim do Plano de segurança*/
 
 /* Header */
