@@ -32,32 +32,41 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="descricao_momento">Coisas que eu poderia fazer agora para me
-                                    distrair</label>
-                                <textarea class="form-control" id="descricao_momento" name="descricao_momento" rows="3"
+                                <label for="problema_resolver">Tenho um problema a se resolver?</label>
+                                <textarea class="form-control" id="problema_resolver" name="problema_resolver" rows="3"
+                                    placeholder="Digite possíveis soluções" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="coisas_distrair">Coisas que eu poderia fazer agora para me distrair</label>
+                                <textarea class="form-control" id="coisas_distrair" name="coisas_distrair" rows="3"
                                     placeholder="Digite o que poderia ser feito" required></textarea>
                                 <div class="checkbox-group">
                                     <label>Sugestões:</label>
-                                    <label><input type="checkbox" name="sinais[]" value="fisicos">Ouvir músicas</label>
-                                    <label><input type="checkbox" name="sinais[]" value="sentimentos">Limpar</label>
-                                    <label><input type="checkbox" name="sinais[]" value="frustracao">Pintar</label>
-                                    <label><input type="checkbox" name="sinais[]" value="tristeza">Ler um livro</label>
-                                    <label><input type="checkbox" name="sinais[]" value="medo">Ler um cartão lembrete
-                                        (escreva algo positivo)</label>
-                                    <label><input type="checkbox" name="sinais[]" value="irritabilidade">Procurar
-                                        aprender algo de um assunto que desconheço</label>
-                                    <label><input type="checkbox" name="sinais[]" value="repetitivos">Ler ou assistir
-                                        algo sobre a minha religião</label>
-                                    <label><input type="checkbox" name="sinais[]" value="agressividade">Dar uma volta na
-                                        quadra e voltar</label>
-                                    <label><input type="checkbox" name="sinais[]" value="fisiologica">Fazer um passeio
-                                        sozinho</label>
-                                    <label><input type="checkbox" name="sinais[]" value="substancia">Tirar fotos de algo
-                                        que acho belo na natureza</label>
-                                    <label><input type="checkbox" name="sinais[]" value="relacionamento">Jogar um jogo
-                                        que eu goste</label>
-                                    <label><input type="checkbox" name="sinais[]" value="podcast">Ouvir podcast de
-                                        assunto que desconheço</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="ouvir_musicas">Ouvir músicas</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="limpar">Limpar</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="pintar">Pintar</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]" value="ler_livro">Ler
+                                        um livro</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="cartao_lembrete">Ler um cartão lembrete</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="aprender_algo">Procurar aprender algo</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]" value="religiao">Ler
+                                        ou assistir sobre minha religião</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="volta_quadra">Dar uma volta na quadra</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="passeio_sozinho">Fazer um passeio sozinho</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]"
+                                            value="fotos_natureza">Tirar fotos da natureza</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]" value="jogar">Jogar um
+                                        jogo que eu goste</label>
+                                    <label><input type="checkbox" name="distracoes_pessoais_p2[]" value="podcast">Ouvir
+                                        podcast</label>
                                 </div>
                             </div>
 
@@ -82,29 +91,29 @@
         document.getElementById('nextPage').addEventListener('click', function (e) {
             e.preventDefault();
 
-            const pensamentos = document.getElementById('pensamentos').value.trim();
-            const descricao = document.getElementById('descricao_momento').value.trim();
-            const checkboxes = document.querySelectorAll('input[name="sinais[]"]:checked');
+            const problemaResolver = document.getElementById('problema_resolver').value.trim();
+            const coisasDistrair = document.getElementById('coisas_distrair').value.trim();
+            const checkboxes = document.querySelectorAll('input[name="distracoes_pessoais_p2[]"]:checked');
 
-            const sinaisMarcados = Array.from(checkboxes).map(cb => cb.value);
+            const distracoesSelecionadas = Array.from(checkboxes).map(cb => cb.value);
 
             let valid = true;
             let mensagens = [];
 
-            if (!pensamentos) {
+            if (!problemaResolver) {
                 valid = false;
                 mensagens.push("Preencha o campo 'Tenho um problema a se resolver?'.");
             }
 
-            if (!descricao) {
+            if (!coisasDistrair) {
                 valid = false;
                 mensagens.push("Preencha o campo 'Coisas que eu poderia fazer agora para me distrair'.");
             }
 
             if (valid) {
-                localStorage.setItem('pensamentos', pensamentos);
-                localStorage.setItem('descricao', descricao);
-                localStorage.setItem('sinais', JSON.stringify(sinaisMarcados));
+                localStorage.setItem('problema_resolver', problemaResolver);
+                localStorage.setItem('coisas_distrair', coisasDistrair);
+                localStorage.setItem('distracoes_pessoais_p2', JSON.stringify(distracoesSelecionadas));
 
                 window.location.href = "plano3.html";
             } else {
@@ -118,32 +127,21 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            const fromPage1 = localStorage.getItem('fromPage1');
+            const problemaResolver = localStorage.getItem('problema_resolver');
+            const coisasDistrair = localStorage.getItem('coisas_distrair');
+            const distracoes = JSON.parse(localStorage.getItem('distracoes_pessoais_p2')) || [];
 
-            if (fromPage1 === 'true') {
-                document.getElementById('pensamentos').value = '';
-                document.getElementById('descricao_momento').value = '';
+            if (problemaResolver) document.getElementById('problema_resolver').value = problemaResolver;
+            if (coisasDistrair) document.getElementById('coisas_distrair').value = coisasDistrair;
 
-                const checkboxes = document.querySelectorAll('input[name="sinais[]"]');
-                checkboxes.forEach(cb => cb.checked = false);
-
-                localStorage.removeItem('fromPage1');
-            } else {
-                const pensamentos = localStorage.getItem('pensamentos');
-                const descricao = localStorage.getItem('descricao');
-                const sinais = JSON.parse(localStorage.getItem('sinais')) || [];
-
-                if (pensamentos) document.getElementById('pensamentos').value = pensamentos;
-                if (descricao) document.getElementById('descricao_momento').value = descricao;
-
-                sinais.forEach(valor => {
-                    const checkbox = document.querySelector(`input[name="sinais[]"][value="${valor}"]`);
-                    if (checkbox) {
-                        checkbox.checked = true;
-                    }
-                });
-            }
+            distracoes.forEach(valor => {
+                const checkbox = document.querySelector(`input[name="distracoes_pessoais_p2[]"][value="${valor}"]`);
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
         });
+
 
 
         async function loadTemplate(id, file) {
