@@ -103,12 +103,6 @@
     outline: none;
 }
 
-#cancelPage {
-    background-color: #B2323C;
-    color: white;
-    border: 1px solid;
-}
-
 #nextPage:hover,#prevPage:hover {
     background-color: var(--cor4);
     color: white;
@@ -139,7 +133,7 @@
 }
 
 
-#cancelar{
+#cancelar,#cancelPage{
   background-color: #B2323C;
   color: white;
   border: 1px solid;
