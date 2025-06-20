@@ -23,8 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center; 
-  margin-top: 80px;
-  
+  margin: 80px 0 80px;
 }
 
 .pg_plano {
@@ -90,7 +89,7 @@
     border: 1px solid #ccc;
 }
 
-#nextPage,#prevPage {
+#nextPage,#prevPage,#cancelPage{
     display: block;
     margin-left: auto;
     background-color: var(--cor5);
@@ -102,6 +101,12 @@
     text-decoration: none;
     text-align: center;
     outline: none;
+}
+
+#cancelPage {
+    background-color: #B2323C;
+    color: white;
+    border: 1px solid;
 }
 
 #nextPage:hover,#prevPage:hover {

@@ -72,19 +72,27 @@
                             </div>
 
                             <nav aria-label="Navegação">
-                                <ul class="pagination justify-content-end">
-                                    <li class="page-item disabled">
-                                        <a href="#" class="page-link" id="prevPage" aria-disabled="true"> <i
-                                                class="fa-solid fa-arrow-left mr-2"></i> Anterior</a>
-                                    </li>
+                                <ul class="pagination justify-content-between w-100">
                                     <li class="page-item">
-                                        <a class="page-link" href="#" id="nextPage">
-                                            Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
+                                        <a href="#" class="page-link" id="cancelPage">
+                                            <i class="fa-solid fa-ban mr-2"></i>Cancelar
                                         </a>
                                     </li>
-
+                                    <div class="d-flex">
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" id="prevPage">
+                                                <i class="fa-solid fa-arrow-left mr-2"></i> Anterior
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" id="nextPage">
+                                                Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
+                                            </a>
+                                        </li>
+                                    </div>
                                 </ul>
                             </nav>
+
 
                         </fieldset>
                     </form>
