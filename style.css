@@ -250,7 +250,7 @@
     display: flex;
     align-items: center;
     width: 98%;
-    text-decoration: none;
+    text-decoration: none !important;
     color: var(--temp-text);
     height: 70px;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -441,7 +441,6 @@
   #registro-cognitivo-form .btn-submit:hover {
     background-color: #223868;
     color: rgb(223, 237, 250);
-    font-weight: bold;
   }
 
   #registro-cognitivo-form .btn-cancel {
@@ -452,7 +451,6 @@
   #registro-cognitivo-form .btn-cancel:hover {
     background-color: #474747;
     color: rgb(234, 236, 238);
-    font-weight: bold;
   }
 
   #btn_primary .btn{
