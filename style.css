@@ -8,6 +8,17 @@
     --cor4: #11386C;
     --cor5: #2A5998;
 
+    --cancelar: #B2323C;
+
+    --sidebar-icon1: #10386c;
+    --sidebar-icon2: #1b4b8a;
+    --sidebar-icon3: #2a5998;
+    --sidebar-icon4: #3f6dab;
+    --sidebar-icon5: #578ace;
+
+    --bg-registro: #f4f9fc;
+    --titulo: #3b5998;
+
     /* essas variáveis são temporárias, depois eu adequo certinho */
     --temp-primary: #1b4b8a;
     --temp-secondary: #c3cad5;
@@ -134,10 +145,11 @@
 
 
 #cancelar{
-  background-color: #B2323C;
+  background-color: var(--cancelar);
   color: white;
   border: 1px solid;
 }
+
 #cancelar:hover{
   background-color: var(--cor1);
   color: #99232E;
@@ -265,19 +277,19 @@
   }
   
   #temp-icon-voltar {
-    color: #10386c;
+    color: var(--sidebar-icon1);
   }
   #temp-icon-cadastro {
-    color: #1b4b8a;
+    color: var(--sidebar-icon2);
   }
   #temp-icon-contato {
-    color: #2a5998;
+    color: var(--sidebar-icon3);
   }
   #temp-icon-frases {
-    color: #3f6dab;
+    color: var(--sidebar-icon4);
   }
   #temp-icon-sobre {
-    color: #578ace;
+    color: var(--sidebar-icon5);
   }
   
   .temp-nav-text {
@@ -339,20 +351,19 @@
   /* --- Registro Cognitivo --- */
   
   body.registro-cognitivo{
-    background-color: #f4f9fc;
-    color: #2c3e50;
-    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--bg-registro);
+    color: darkslategrey;
   }
   
-.section-title { /* --- estou tentando padronizar --- */
+.section-title { 
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #3b5998;
+    color: var(--titulo);
   }
   
   #registro-cognitivo-form .card-form {
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
     padding: 2rem;
@@ -362,15 +373,21 @@
     display: flex;
     border-radius: 2rem;
     padding: 0.5rem 1.25rem;
-    border: 2px solid #d0e6f7;
-    background-color: #ffffff;
-    color: #2c3e50;
+    border: 2px solid var(--cor1);
+    background-color: white;
+    color: darkslategrey;
     font-weight: 500;
     transition: 0.2s;
     justify-content: center;
   }
   
-  #registro-cognitivo-form .btn-option:hover,
+  
+  #registro-cognitivo-form .btn-option:hover{
+    background-color: #4f6eb1;
+    color: #fff;
+    border-color: #4f6eb1;
+  }
+
   #registro-cognitivo-form .btn-check:checked + .btn-option {
     background-color: #3b5998;
     color: #fff;
@@ -385,8 +402,13 @@
     border: none;
     padding: 0;
     margin-top: 0.5rem;
-    text-decoration: underline;
     cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+
+    #registro-cognitivo-form .btn-add:hover {
+    color: black;
+    transition: color 0.2s ease-in-out;
   }
   
   #registro-cognitivo-form .input-extra {
