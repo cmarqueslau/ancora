@@ -50,8 +50,6 @@
                     </div>
                     <form action="index.html" method="get">
                         <div class="form-group text-center">
-                            <button type="button" class="btn btn-primary" id="cancelar" onclick="cancelarPlano()"> <i
-                                    class="fa-solid fa-ban mr-2"></i> Cancelar</button>
                             <button type="button" class="btn btn-primary" id="encerrar" onclick="finalizarPlano()"> <i
                                     class="fa-solid fa-floppy-disk mr-2"></i> Finalizar Plano de
                                 Segurança</button>
@@ -59,20 +57,28 @@
                     </form>
                 </div>
                 <div class="pg_plano" id="planoFinal2">
-                    <nav aria-label="Navegação" class="mt-3">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item">
-                                <a href="#" class="page-link" id="prevPage">
-                                    <i class="fa-solid fa-arrow-left mr-2"></i> Anterior
-                                </a>
-                            </li>
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" id="nextPage" aria-disabled="true">
-                                    Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <nav aria-label="Navegação">
+                                <ul class="pagination justify-content-between w-100">
+                                    <li class="page-item">
+                                        <button type="button" class="btn btn-final btn-cancel" id="cancelar">
+                                            <i class="fa-solid fa-circle-xmark me-2"></i>
+                                            Cancelar
+                                        </button>
+                                    </li>
+                                    <div class="d-flex">
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" id="prevPage">
+                                                <i class="fa-solid fa-arrow-left mr-2"></i> Anterior
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" id="nextPage">
+                                                Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
+                                            </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </nav>
 
 
                 </div>
@@ -117,20 +123,7 @@
             }, 1000);
         }
 
-        function cancelarPlano() {
-
-            setTimeout(() => {
-                localStorage.removeItem('pensamentos');
-                localStorage.removeItem('descricao');
-                localStorage.removeItem('checkboxes');
-                localStorage.removeItem('outros');
-                localStorage.removeItem('fromPage1');
-                localStorage.removeItem('fromPage2');
-                localStorage.removeItem('fromPage3');
-
-                window.location.href = "index.html";
-            }, 500);
-        }
+        
 
         async function loadTemplate(id, file) {
             const res = await fetch(file);

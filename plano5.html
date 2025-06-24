@@ -16,7 +16,7 @@
     <div class="container-fluid d-flex p-0">
         <div id="template-sidebar"></div>
         <main class="mainPlano">
-            <h1 class="tituloSecao">Ajuda Profissional</h1>
+            <h1 id="titulo" class="tituloSecao">Ajuda Profissional</h1>
             <section>
                 <div class="pg_plano">
                     <form>
@@ -48,18 +48,26 @@
                                 Você também pode contatar a Unidade Básica de Saúde do seu bairro.
                             </div>
 
-                            <nav aria-label="Navegação">
+                           <nav aria-label="Navegação">
                                 <ul class="pagination justify-content-between w-100">
                                     <li class="page-item">
-                                        <a href="plano4.html" class="page-link">
-                                            <i class="fa-solid fa-arrow-left mr-2"></i>Anterior
-                                        </a>
+                                        <button type="button" class="btn btn-final btn-cancel" id="cancelar">
+                                            <i class="fa-solid fa-circle-xmark me-2"></i>
+                                            Cancelar
+                                        </button>
                                     </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="plano6.html">
-                                            Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
-                                        </a>
-                                    </li>
+                                    <div class="d-flex">
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" id="prevPage">
+                                                <i class="fa-solid fa-arrow-left mr-2"></i> Anterior
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" id="nextPage">
+                                                Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
+                                            </a>
+                                        </li>
+                                    </div>
                                 </ul>
                             </nav>
                         </fieldset>

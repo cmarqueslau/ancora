@@ -100,7 +100,7 @@
     border: 1px solid #ccc;
 }
 
-#nextPage,#prevPage{
+#nextPage,#prevPage,#cancelar{
     display: block;
     margin-left: auto;
     background-color: var(--cor5);
@@ -145,16 +145,16 @@
 
 
 #cancelar{
-  background-color: var(--cancelar);
+  background-color: rgb(112, 113, 114);
   color: white;
   border: 1px solid;
 }
 
 #cancelar:hover{
-  background-color: var(--cor1);
-  color: #99232E;
-  border: 1px solid;
+    background-color: #474747;
+    color: rgb(234, 236, 238);
 }
+
 #planoFinal{
   border-end-end-radius: 0px;
   border-end-start-radius: 0px;

@@ -74,9 +74,10 @@
                             <nav aria-label="Navegação">
                                 <ul class="pagination justify-content-between w-100">
                                     <li class="page-item">
-                                        <a href="index.html" class="page-link" id="cancelar">
-                                            <i class="fa-solid fa-ban mr-2"></i>Cancelar
-                                        </a>
+                                        <button type="button" class="btn btn-final btn-cancel" id="cancelar">
+                                            <i class="fa-solid fa-circle-xmark me-2"></i>
+                                            Cancelar
+                                        </button>
                                     </li>
                                     <div class="d-flex">
                                         <li class="page-item">
@@ -148,6 +149,24 @@
                 alert(mensagens.join("\n"));
             }
         });
+
+        document.getElementById('cancelar').addEventListener('click', function () {
+            document.getElementById('pensamentos').value = '';
+            document.getElementById('descricao_momento').value = '';
+            document.getElementById('texto_outros').value = '';
+
+            const checkboxes = document.querySelectorAll('input[name="sinais[]"]');
+            checkboxes.forEach(cb => cb.checked = false);
+
+            localStorage.removeItem('pensamentos');
+            localStorage.removeItem('descricao');
+            localStorage.removeItem('checkboxes');
+            localStorage.removeItem('outros');
+            localStorage.removeItem('fromPage1');
+
+            window.location.href = 'index.html';
+        });
+
 
         window.addEventListener('DOMContentLoaded', () => {
             const pensamentos = localStorage.getItem('pensamentos');
