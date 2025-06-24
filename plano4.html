@@ -37,9 +37,12 @@
                                 <input type="tel" class="form-control" id="telContato" placeholder="Telefone">
                             </div>
 
-                            <button type="button" class="btn btn-primary mb-3" id="btnAdicionar">
-                                <i class="fa-solid fa-plus"></i> Adicionar Contato
-                            </button>
+                            <div class="form-group d-flex justify-content-end">
+                                <button type="button" class="btn btn-final" id="btnAdicionar">
+                                    <i class="fa-solid fa-plus mr-2"></i>Adicionar Contato
+                                </button>
+                            </div>
+
 
                             <nav aria-label="Navegação">
                                 <ul class="pagination justify-content-between w-100">
@@ -79,13 +82,14 @@
             lista.innerHTML = '';
             contatos.forEach((contato, index) => {
                 const li = document.createElement('li');
-                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                li.className = 'list-group-item d-flex justify-content-between align-items-center contato-salvo';
                 li.innerHTML = `${contato.nome} - ${contato.telefone}
                 <button class="btn btn-danger btn-sm" onclick="removerContato(${index})">
-                    <i class="fa-solid fa-trash"></i>
+                <i class="fa-solid fa-trash"></i>
                 </button>`;
                 lista.appendChild(li);
             });
+
         }
 
         function removerContato(index) {
@@ -110,6 +114,32 @@
                 alert('Preencha nome e telefone para adicionar.');
             }
         });
+
+        document.getElementById('nextPage').addEventListener('click', function (e) {
+            e.preventDefault();
+            const contatos = JSON.parse(localStorage.getItem('contatos') || '[]');
+
+            if (contatos.length > 0) {
+                window.location.href = 'plano5.html';
+            } else {
+                alert('Adicione pelo menos um contato antes de continuar.');
+            }
+        });
+
+        document.getElementById('prevPage').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = 'plano3.html';
+        });
+
+        document.getElementById('cancelar').addEventListener('click', function () {
+            document.getElementById('nomeContato').value = '';
+            document.getElementById('telContato').value = '';
+
+            localStorage.removeItem('contatos');
+
+            window.location.href = 'index.html';
+        });
+
 
         window.addEventListener('DOMContentLoaded', carregarContatos);
 

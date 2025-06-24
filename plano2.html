@@ -129,6 +129,21 @@
             }
         });
 
+        document.getElementById('cancelar').addEventListener('click', function () {
+            document.getElementById('problema_resolver').value = '';
+            document.getElementById('coisas_distrair').value = '';
+
+            const checkboxes = document.querySelectorAll('input[name="distracoes_pessoais_p2[]"]');
+            checkboxes.forEach(cb => cb.checked = false);
+
+            localStorage.removeItem('problema_resolver');
+            localStorage.removeItem('coisas_distrair');
+            localStorage.removeItem('distracoes_pessoais_p2');
+
+            window.location.href = 'index.html';
+        });
+
+
         document.getElementById('prevPage').addEventListener('click', function (e) {
             e.preventDefault();
             window.location.href = "plano.html";

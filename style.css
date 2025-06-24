@@ -100,7 +100,7 @@
     border: 1px solid #ccc;
 }
 
-#nextPage,#prevPage,#cancelar{
+#nextPage,#prevPage,#cancelar,#btnAdicionar{
     display: block;
     margin-left: auto;
     background-color: var(--cor5);
@@ -132,6 +132,12 @@
     margin-bottom: 10px;
 }
 
+#btnAdicionar{
+  background-color: #2A5998;
+  color: #e8eef7;
+  border: 1px solid;
+}
+
 #encerrar{
   background-color: var(--cor3);
   color: var(--cor4);
@@ -143,6 +149,12 @@
   border: 1px solid;
 }
 
+.contato-salvo,.local-salvo{
+    background-color: #e7f1ff !important;
+    color: #031d40;
+    border: 1px solid #b8d1f3;
+    border-radius: 5px;
+}
 
 #cancelar{
   background-color: rgb(112, 113, 114);

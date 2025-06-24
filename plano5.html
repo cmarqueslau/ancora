@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,20 +28,24 @@
 
                             <div class="form-group">
                                 <p>Se você já cadastrou um local de tratamento, ele aparecerá abaixo:</p>
-                                <p id="localTratamento"><em>Nenhum local cadastrado.</em></p>
+                                <ul id="listaLocais" class="list-group mb-3"></ul>
                             </div>
 
                             <div class="form-group">
                                 <label for="novoLocal">Cadastrar novo local de tratamento:</label>
                                 <input type="text" class="form-control mb-2" id="nomeLocal" placeholder="Nome do local">
                                 <input type="tel" class="form-control" id="telLocal" placeholder="Telefone do local">
-                                <button type="button" class="btn btn-primary mt-2" id="btnSalvarLocal">
-                                    <i class="fa-solid fa-plus"></i> Salvar Local
-                                </button>
+                                <div class="form-group d-flex justify-content-end">
+
+                                    <button type="button" class="btn btn-final" id="btnAdicionar">
+                                        <i class="fa-solid fa-plus mr-2"></i> Salvar Local
+                                    </button>
+                                </div>
                             </div>
 
+
                             <div class="alert alert-info">
-                                <strong>Centro de Valorização da Vida:</strong> Ligue 188 ou acesse 
+                                <strong>Centro de Valorização da Vida:</strong> Ligue 188 ou acesse
                                 <a href="https://cvv.org.br/chat/" target="_blank">cvv.org.br/chat</a> para conversar.
                             </div>
 
@@ -48,7 +53,7 @@
                                 Você também pode contatar a Unidade Básica de Saúde do seu bairro.
                             </div>
 
-                           <nav aria-label="Navegação">
+                            <nav aria-label="Navegação">
                                 <ul class="pagination justify-content-between w-100">
                                     <li class="page-item">
                                         <button type="button" class="btn btn-final btn-cancel" id="cancelar">
@@ -81,11 +86,27 @@
         function carregarLocal() {
             const nome = localStorage.getItem('nomeLocal') || '';
             const tel = localStorage.getItem('telLocal') || '';
-            const local = nome && tel ? `${nome} - ${tel}` : 'Nenhum local cadastrado.';
-            document.getElementById('localTratamento').innerText = local;
+            const lista = document.getElementById('listaLocais');
+            lista.innerHTML = '';
+
+            if (nome && tel) {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center local-item';
+                li.innerHTML = `${nome} - ${tel} <button class="btn btn-danger btn-sm local-salvo" onclick="removerLocal()">
+                <i class="fa-solid fa-trash"></i></button>`;
+                lista.appendChild(li);
+            } else {
+                lista.innerHTML = '<li class="list-group-item text-muted">Nenhum local cadastrado.</li>';
+            }
         }
 
-        document.getElementById('btnSalvarLocal').addEventListener('click', () => {
+        function removerLocal() {
+            localStorage.removeItem('nomeLocal');
+            localStorage.removeItem('telLocal');
+            carregarLocal();
+        }
+
+        document.getElementById('btnAdicionar').addEventListener('click', () => {
             const nome = document.getElementById('nomeLocal').value.trim();
             const tel = document.getElementById('telLocal').value.trim();
 
@@ -100,6 +121,36 @@
             }
         });
 
+
+        document.getElementById('nextPage').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const nome = localStorage.getItem('nomeLocal');
+            const tel = localStorage.getItem('telLocal');
+
+            if (nome && tel) {
+                window.location.href = 'plano6.html';
+            } else {
+                alert('Cadastre um local de tratamento ou insira um nome e telefone antes de continuar.');
+            }
+        });
+
+        document.getElementById('prevPage').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = 'plano4.html';
+        });
+
+        document.getElementById('cancelar').addEventListener('click', function () {
+            document.getElementById('nomeLocal').value = '';
+            document.getElementById('telLocal').value = '';
+
+            localStorage.removeItem('nomeLocal');
+            localStorage.removeItem('telLocal');
+
+            window.location.href = 'index.html';
+        });
+
+
         window.addEventListener('DOMContentLoaded', carregarLocal);
 
         async function loadTemplate(id, file) {
@@ -111,4 +162,5 @@
         loadTemplate('template-sidebar', '_sidebar.html');
     </script>
 </body>
+
 </html>
