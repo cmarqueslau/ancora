@@ -139,13 +139,13 @@
 }
 
 #encerrar{
-  background-color: var(--cor3);
-  color: var(--cor4);
+  background-color: rgb(8, 143, 103);
+  color: rgb(255, 255, 255);
   border: 1px solid;
 }
 #encerrar:hover{
-  background-color: var(--cor4);
-  color: white;
+  background-color: rgb(2, 70, 50);
+  color: rgb(166, 255, 228);
   border: 1px solid;
 }
 

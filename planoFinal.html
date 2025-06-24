@@ -87,8 +87,8 @@
                                         <i class="fa-solid fa-arrow-left mr-2"></i> Anterior
                                     </a>
                                 </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" id="nextPage">
+                                <li class="page-item disable">
+                                    <a class="page-link" href="#" id="nextPage" aria-disabled="true">
                                         Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
                                     </a>
                                 </li>
@@ -145,9 +145,22 @@
                 window.location.href = "index.html";
             }, 1000);
         }
+        function limparPlanoCompleto() {
+            const todasChaves = [
+                'pensamentos', 'descricao', 'checkboxes', 'outros', 'fromPage1', // plano 1
+                'problema_resolver', 'coisas_distrair', 'distracoes_pessoais_p2', // plano 2
+                'lugares_distracao', 'pessoas_distracao', 'sinais_social',       // plano 3
+                'contatos',                                                     // plano 4
+                'nomeLocal', 'telLocal',                                        // plano 5
+                'ambienteSeguro', 'desvantagens', 'contatoEmergencia'           // plano 6
+            ];
+            todasChaves.forEach(chave => localStorage.removeItem(chave));
+        }
 
-
-
+        document.getElementById('cancelar').addEventListener('click', function () {
+            limparPlanoCompleto();
+            window.location.href = 'index.html';
+        });
 
         async function loadTemplate(id, file) {
             const res = await fetch(file);
