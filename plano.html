@@ -72,14 +72,28 @@
                             </div>
 
                             <nav aria-label="Navegação">
-                                <ul class="pagination justify-content-end">
-                                    <li class="page-item disabled"><a href="#" class="page-link" id="prevPage"
-                                            aria-disabled="true">Anterior</a></li>
+                                <ul class="pagination justify-content-between w-100">
                                     <li class="page-item">
-                                        <a class="page-link" href="#" id="nextPage">Próxima</a>
+                                        <button type="button" class="btn btn-final btn-cancel" id="cancelar">
+                                            <i class="fa-solid fa-circle-xmark me-2"></i>
+                                            Cancelar
+                                        </button>
                                     </li>
+                                    <div class="d-flex">
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" id="prevPage">
+                                                <i class="fa-solid fa-arrow-left mr-2"></i> Anterior
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" id="nextPage">
+                                                Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
+                                            </a>
+                                        </li>
+                                    </div>
                                 </ul>
                             </nav>
+
 
                         </fieldset>
                     </form>
@@ -135,6 +149,24 @@
                 alert(mensagens.join("\n"));
             }
         });
+
+        document.getElementById('cancelar').addEventListener('click', function () {
+            document.getElementById('pensamentos').value = '';
+            document.getElementById('descricao_momento').value = '';
+            document.getElementById('texto_outros').value = '';
+
+            const checkboxes = document.querySelectorAll('input[name="sinais[]"]');
+            checkboxes.forEach(cb => cb.checked = false);
+
+            localStorage.removeItem('pensamentos');
+            localStorage.removeItem('descricao');
+            localStorage.removeItem('checkboxes');
+            localStorage.removeItem('outros');
+            localStorage.removeItem('fromPage1');
+
+            window.location.href = 'index.html';
+        });
+
 
         window.addEventListener('DOMContentLoaded', () => {
             const pensamentos = localStorage.getItem('pensamentos');

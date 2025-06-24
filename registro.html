@@ -26,27 +26,32 @@
             <div class="card-form">
               <h2 class="section-title"><i class="bi bi-heart-pulse-fill me-2"></i>Avaliação Psicológica</h2>
               <div class="d-flex flex-column gap-2">
+                <p>O paciente relata estar sentindo:</p>
                 <div>
                   <input type="checkbox" class="btn-check" id="ansioso" name="psicologico[]" value="ansioso">
-                  <label class="btn btn-option w-100 text-start" for="ansioso">Ansioso</label>
+                  <label class="btn btn-option w-100 text-start" for="ansioso">Ansiedade</label>
                 </div>
                 <div>
-                  <input type="checkbox" class="btn-check" id="alegre" name="psicologico[]" value="alegre">
-                  <label class="btn btn-option w-100 text-start" for="alegre">Alegre</label>
-                </div>
-                <div>
-                  <input type="checkbox" class="btn-check" id="surpreso" name="psicologico[]" value="surpreso">
-                  <label class="btn btn-option w-100 text-start" for="surpreso">Surpreso</label>
+                  <input type="checkbox" class="btn-check" id="triste" name="psicologico[]" value="triste">
+                  <label class="btn btn-option w-100 text-start" for="triste">Tristeza</label>
                 </div>
                 <div>
                   <input type="checkbox" class="btn-check" id="apatico" name="psicologico[]" value="apatico">
-                  <label class="btn btn-option w-100 text-start" for="apatico">Apático</label>
+                  <label class="btn btn-option w-100 text-start" for="apatico">Apatia</label>
+                </div>
+                <div>
+                  <input type="checkbox" class="btn-check" id="alegre" name="psicologico[]" value="alegre">
+                  <label class="btn btn-option w-100 text-start" for="alegre">Alegria</label>
+                </div>
+                <div>
+                  <input type="checkbox" class="btn-check" id="surpreso" name="psicologico[]" value="surpreso">
+                  <label class="btn btn-option w-100 text-start" for="surpreso">Surpresa</label>
                 </div>
               </div>
               <div class="text-end">
                 <button type="button" class="btn-add" onclick="toggleExtra('extraPsico')">+ Outro</button>
                 <input type="text" id="extraPsico" name="psicologico_outro" class="form-control input-extra"
-                  placeholder="Descreva outro estado">
+                  placeholder="Digite o estado emocional..">
               </div>
           </div>
         </div>
@@ -56,6 +61,7 @@
             <div class="card-form">
               <h2 class="section-title"><i class="bi bi-lungs-fill"></i>Reações Fisiológicas</h2>
               <div class="d-flex flex-column gap-2">
+                <p>O paciente está com:</p>
                 <div>
                   <input type="checkbox" class="btn-check" id="falta_ar" name="fisiologico[]" value="falta_ar">
                   <label class="btn btn-option w-100 text-start" for="falta_ar">Falta de Ar</label>
@@ -72,11 +78,15 @@
                   <input type="checkbox" class="btn-check" id="cansaco" name="fisiologico[]" value="cansaco">
                   <label class="btn btn-option w-100 text-start" for="cansaco">Cansaço</label>
                 </div>
+                <div>
+                  <input type="checkbox" class="btn-check" id="tremores" name="fisiologico[]" value="tremores">
+                  <label class="btn btn-option w-100 text-start" for="cansaco">Tremores</label>
+                </div>
               </div>
               <div class="text-end">
               <button type="button" class="btn-add" onclick="toggleExtra('extraFisico')">+ Outro</button>
               <input type="text" id="extraFisico" name="fisiologico_outro" class="form-control input-extra"
-                placeholder="Descreva outro sintoma">
+                placeholder="Descreva outro sintoma físico..">
               </div>
             </div>
           </div>
@@ -88,11 +98,11 @@
           <div class="mb-3">
             <label for="descricao" class="form-label">Descreva observações relevantes sobre o estado do paciente,
               evolução clínica ou fatores de risco identificados.</label>
-            <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Digite aqui um pouco sobre o paciente.."></textarea>
+            <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Escreva um pouco sobre o paciente.." required></textarea>
           </div>
           <div class="mb-3">
             <label for="conduta" class="form-label">Conduta Recomendada / Encaminhamentos</label>
-            <textarea class="form-control" id="conduta" name="conduta" rows="4" placeholder="Digite aqui a descrição da consulta.."></textarea>
+            <textarea class="form-control" id="conduta" name="conduta" rows="4" placeholder="Digite a descrição da consulta.." required></textarea>
           </div>
           <div class="text-end">
             <button type="button" class="btn btn-final btn-cancel" id="btn-cancelarForm">
@@ -128,23 +138,24 @@ async function loadTemplate(id, file) {
     }
 
     document.getElementById('registro-cognitivo-form').addEventListener('submit', function (e) {
+
       e.preventDefault();
+
       Swal.fire({
         title: "Salvo com sucesso!",
         text: "As informações do registro foram salvas. Você será redirecionado para a página principal.",
         icon: "success",
         showCancelButton: true,
-        cancelButtonColor: "#e47961",
+        cancelButtonColor: "#B2323C",
         confirmButtonColor: "#6abd6c",
         confirmButtonText: "Prosseguir",
         cancelButtonText: "Cancelar",
-        closeOnConfirm: false,
-        closeOnCancel: false
-      }, function (isConfirm) {
-        if (isConfirm) {
+        allowOutsideClick: false
+      }).then((result) => {
+        if (result.isConfirmed) {
           setTimeout(() => {
             window.location.href = 'index.html';
-          }, 300);
+          }, 200);
         }
       });
     });

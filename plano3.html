@@ -68,11 +68,25 @@
                             </div>
 
                             <nav aria-label="Navegação">
-                                <ul class="pagination justify-content-end">
-                                    <li class="page-item"><a href="#" class="page-link" id="prevPage">Anterior</a></li>
+                                <ul class="pagination justify-content-between w-100">
                                     <li class="page-item">
-                                        <a class="page-link" href="#" id="nextPage">Próxima</a>
+                                        <button type="button" class="btn btn-final btn-cancel" id="cancelar">
+                                            <i class="fa-solid fa-circle-xmark me-2"></i>
+                                            Cancelar
+                                        </button>
                                     </li>
+                                    <div class="d-flex">
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" id="prevPage">
+                                                <i class="fa-solid fa-arrow-left mr-2"></i> Anterior
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" id="nextPage">
+                                                Próxima <i class="fa-solid fa-arrow-right ml-2"></i>
+                                            </a>
+                                        </li>
+                                    </div>
                                 </ul>
                             </nav>
 
@@ -99,18 +113,18 @@
 
             if (!pensamentos) {
                 valid = false;
-                mensagens.push("Preencha o campo 'Tenho um problema a se resolver?'.");
+                mensagens.push("Preencha o campo 'Distrações sociais - Lugares'.");
             }
 
             if (!descricao) {
                 valid = false;
-                mensagens.push("Preencha o campo 'Coisas que eu poderia fazer agora para me distrair'.");
+                mensagens.push("Preencha o campo 'Distrações sociais - Pessoas'.");
             }
 
             if (valid) {
-                localStorage.setItem('pensamentos', pensamentos);
-                localStorage.setItem('descricao', descricao);
-                localStorage.setItem('sinais', JSON.stringify(sinaisMarcados));
+                localStorage.setItem('lugares_distracao', pensamentos);
+                localStorage.setItem('pessoas_distracao', descricao);
+                localStorage.setItem('sinais_social', JSON.stringify(sinaisMarcados));
 
                 window.location.href = "plano4.html";
             } else {
@@ -118,38 +132,41 @@
             }
         });
 
+        document.getElementById('cancelar').addEventListener('click', function () {
+            document.getElementById('pensamentos').value = '';
+            document.getElementById('descricao_momento').value = '';
+
+            const checkboxes = document.querySelectorAll('input[name="sinais[]"]');
+            checkboxes.forEach(cb => cb.checked = false);
+
+            localStorage.removeItem('lugares_distracao');
+            localStorage.removeItem('pessoas_distracao');
+            localStorage.removeItem('sinais_social');
+
+            window.location.href = 'index.html';
+        });
+
+
+
         document.getElementById('prevPage').addEventListener('click', function (e) {
             e.preventDefault();
             window.location.href = "plano2.html";
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            const fromPage1 = localStorage.getItem('fromPage1');
+            const lugares = localStorage.getItem('lugares_distracao');
+            const pessoas = localStorage.getItem('pessoas_distracao');
+            const sinais = JSON.parse(localStorage.getItem('sinais_social')) || [];
 
-            if (fromPage1 === 'true') {
-                document.getElementById('pensamentos').value = '';
-                document.getElementById('descricao_momento').value = '';
+            if (lugares) document.getElementById('pensamentos').value = lugares;
+            if (pessoas) document.getElementById('descricao_momento').value = pessoas;
 
-                const checkboxes = document.querySelectorAll('input[name="sinais[]"]');
-                checkboxes.forEach(cb => cb.checked = false);
-
-                localStorage.removeItem('fromPage1');
-            } else {
-                const pensamentos = localStorage.getItem('pensamentos');
-                const descricao = localStorage.getItem('descricao');
-                const sinais = JSON.parse(localStorage.getItem('sinais')) || [];
-
-                if (pensamentos) document.getElementById('pensamentos').value = pensamentos;
-                if (descricao) document.getElementById('descricao_momento').value = descricao;
-
-                sinais.forEach(valor => {
-                    const checkbox = document.querySelector(`input[name="sinais[]"][value="${valor}"]`);
-                    if (checkbox) {
-                        checkbox.checked = true;
-                    }
-                });
-            }
+            sinais.forEach(valor => {
+                const checkbox = document.querySelector(`input[name="sinais[]"][value="${valor}"]`);
+                if (checkbox) checkbox.checked = true;
+            });
         });
+
 
 
         async function loadTemplate(id, file) {
