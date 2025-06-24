@@ -19,5 +19,5 @@ $(document).on("click","#temp-sidebar-btn",function() {
 });
 
 document.getElementById('btn-add-motivo').addEventListener('click', () => {
-  alert('Botão + clicado - aqui você pode implementar adicionar um motivo');
+  alert('Botão + clicado');
 });
