@@ -114,7 +114,8 @@
             </div>
         </div>
     </div>
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script>
 
@@ -128,34 +129,95 @@
             alert("Você já está na última página.");
         });
 
+        const {jsPDF} = window.jspdf;
 
-        function finalizarPlano() {
-            $('#modalConcluido').modal('show');
-
-            setTimeout(() => {
-                const campos = [
-                    'pensamentos', 'descricao', 'sinais',
-                    'outros', 'checkboxes',
-                    'contatos', 'nomeLocal', 'telLocal',
-                    'ambienteSeguro', 'desvantagens', 'contatoEmergencia',
-                    'fromPage1', 'fromPage2', 'fromPage3'
-                ];
-                campos.forEach(chave => localStorage.removeItem(chave));
-
-                window.location.href = "index.html";
-            }, 1000);
-        }
         function limparPlanoCompleto() {
             const todasChaves = [
-                'pensamentos', 'descricao', 'checkboxes', 'outros', 'fromPage1', // plano 1
-                'problema_resolver', 'coisas_distrair', 'distracoes_pessoais_p2', // plano 2
-                'lugares_distracao', 'pessoas_distracao', 'sinais_social',       // plano 3
-                'contatos',                                                     // plano 4
-                'nomeLocal', 'telLocal',                                        // plano 5
-                'ambienteSeguro', 'desvantagens', 'contatoEmergencia'           // plano 6
+                'pensamentos', 'descricao', 'checkboxes', 'outros', 'fromPage1',
+                'problema_resolver', 'coisas_distrair', 'distracoes_pessoais_p2',
+                'lugares_distracao', 'pessoas_distracao', 'sinais_social',
+                'contatos', 'nomeLocal', 'telLocal',
+                'ambienteSeguro', 'desvantagens', 'contatoEmergencia'
             ];
             todasChaves.forEach(chave => localStorage.removeItem(chave));
         }
+
+        document.getElementById('encerrar').addEventListener('click', () => {
+            const doc = new jsPDF();
+
+            const lugares = localStorage.getItem('lugares_distracao') || 'Não informado';
+            const pessoas = localStorage.getItem('pessoas_distracao') || 'Não informado';
+            const sinaisSocial = JSON.parse(localStorage.getItem('sinais_social') || '[]').join(', ') || 'Não informado';
+
+            const contatos = JSON.parse(localStorage.getItem('contatos') || '[]');
+            const contatosTxt = contatos.length > 0
+                ? contatos.map(c => `${c.nome} - ${c.telefone}`).join('\n')
+                : 'Nenhum contato salvo';
+
+            const nomeLocal = localStorage.getItem('nomeLocal') || 'Não informado';
+            const telLocal = localStorage.getItem('telLocal') || 'Não informado';
+
+            const ambienteSeguro = localStorage.getItem('ambienteSeguro') || 'Não informado';
+            const desvantagens = localStorage.getItem('desvantagens') || 'Não informado';
+            const contatoEmergencia = localStorage.getItem('contatoEmergencia') || 'Não informado';
+
+            let y = 10;
+            doc.setFontSize(14);
+            doc.text("Plano de Segurança - Resumo", 10, y);
+            y += 10;
+
+            doc.setFontSize(12);
+            doc.text("Distrações Sociais - Lugares:", 10, y);
+            y += 7;
+            doc.text(lugares, 10, y);
+            y += 10;
+
+            doc.text("Distrações Sociais - Pessoas:", 10, y);
+            y += 7;
+            doc.text(pessoas, 10, y);
+            y += 10;
+
+            doc.text("Sinais sociais marcados:", 10, y);
+            y += 7;
+            doc.text(sinaisSocial, 10, y);
+            y += 10;
+
+            doc.text("Contatos de Apoio:", 10, y);
+            y += 7;
+            doc.text(contatosTxt, 10, y);
+            y += 10;
+
+            doc.text("Local de tratamento:", 10, y);
+            y += 7;
+            doc.text(`${nomeLocal} - ${telLocal}`, 10, y);
+            y += 10;
+
+            doc.text("Ambiente Seguro:", 10, y);
+            y += 7;
+            let textoQuebrado = doc.splitTextToSize(ambienteSeguro, 180);
+            doc.text(textoQuebrado, 10, y);
+            y += textoQuebrado.length * 7;
+
+            doc.text("Desvantagens de manter comigo:", 10, y);
+            y += 7;
+            textoQuebrado = doc.splitTextToSize(desvantagens, 180);
+            doc.text(textoQuebrado, 10, y);
+            y += textoQuebrado.length * 7;
+
+            doc.text("Contato de emergência familiar:", 10, y);
+            y += 7;
+            doc.text(contatoEmergencia, 10, y);
+            y += 10;
+
+            doc.save('Plano_Seguranca_Resumo.pdf');
+
+            // Mostrar modal e depois limpar e redirecionar
+            $('#modalConcluido').modal('show');
+            setTimeout(() => {
+                limparPlanoCompleto();
+                window.location.href = "index.html";
+            }, 1000);
+        });
 
         document.getElementById('cancelar').addEventListener('click', function () {
             limparPlanoCompleto();
@@ -171,6 +233,7 @@
         loadTemplate('template-sidebar', '_sidebar.html');
 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
