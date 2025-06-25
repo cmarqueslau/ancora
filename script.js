@@ -18,6 +18,17 @@ $(document).on("click","#temp-sidebar-btn",function() {
     toggleSidebar();
 });
 
-document.getElementById('btn-add-motivo').addEventListener('click', () => {
-  alert('Botão + clicado');
+
+// início - motivos
+
+document.getElementById('btn-add-motivo').addEventListener('click', function() {
+    window.location.href = 'criar-motivo.html';
 });
+
+// add pros outros motivos -> botao e arquivo
+
+document.getElementById("btn-cancelarForm").addEventListener("click", function () {
+  history.back(); 
+});
+
+// fim - motivos
