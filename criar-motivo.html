@@ -70,12 +70,12 @@
     loadTemplate('template-sidebar', '_sidebar.html');
 
     document.getElementById("btn-cancelar").addEventListener("click", function () {
-      history.back(); // ou redirecione: window.location.href = 'motivos.html';
+      history.back(); 
     });
 
     document.getElementById("form-criar-motivo").addEventListener("submit", function (e) {
       e.preventDefault();
-      // Aqui você pode adicionar o envio para o servidor ou salvar localmente
+  
       alert("Motivo salvo com sucesso!");
       window.location.href = "motivos.html";
     });

@@ -31,4 +31,24 @@ document.getElementById("btn-cancelarForm").addEventListener("click", function (
   history.back(); 
 });
 
+document.getElementById('form-criar-motivo').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nomeMotivo').value;
+    const descricao = document.getElementById('descricaoMotivo').value;
+    const data = document.getElementById('dataMotivo').value;
+
+    const novoMotivo = {
+      nome,
+      descricao,
+      data
+    };
+
+    const motivos = JSON.parse(localStorage.getItem('motivos')) || [];
+    motivos.push(novoMotivo);
+    localStorage.setItem('motivos', JSON.stringify(motivos));
+
+    window.location.href = 'motivos.html';
+  });
+
 // fim - motivos
