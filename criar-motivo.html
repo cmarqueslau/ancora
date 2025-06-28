@@ -16,10 +16,67 @@
 </head>
 
 <body class="temp-body criar-motivo">
-  <div id="template-header"></div>
+  <header class="temp-header py-3 px-4">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="temp-logo-container">
+        <a href="index.html">
+          <img src="./imagens/anchor.png" alt="Logotipo Âncora" class="temp-logo">
+          <h1 class="temp-logo-title">Âncora</h1>
+        </a>
+      </div>
+      <nav class="temp-nav-links d-none d-md-flex">
+        <a href="./index.html"><i class="fas fa-home"></i></a>
+        <a href="#"><i class="fas fa-user"></i></a>
+      </nav>
+      <button class="btn d-md-none" id="temp-mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
 
   <div class="container-fluid d-flex p-0 containerDados">
-    <div id="template-sidebar"></div>
+    <div class="temp-sidebar">
+      <div class="temp-sidebar-header">
+        <button class="temp-sidebar-btn" id="temp-sidebar-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <a href="./index.html" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-voltar">
+          <i class="fa-solid fa-circle-left temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Voltar</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-cadastro">
+          <i class="fa-solid fa-hospital-user temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Cadastro de pacientes</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-contato">
+          <i class="fa-solid fa-phone temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Contatos de emergência</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-frases">
+          <i class="fa-solid fa-quote-left temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Frases de apoio</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-sobre">
+          <i class="fa-solid fa-circle-info temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Sobre nós</span>
+      </a>
+    </div> <!-- FECHAMENTO CORRETO DA SIDEBAR -->
 
     <main class="container mb-4 mt-5">
       <h1 class="text-center mb-4 fw-bold" style="color:#3b5998">Criar Novo Motivo</h1>
@@ -35,7 +92,8 @@
 
           <div class="mb-3">
             <label for="descricaoMotivo" class="form-label">Descrição</label>
-            <textarea class="form-control" id="descricaoMotivo" name="descricao" rows="4" placeholder="Explique por que esse motivo é importante" required></textarea>
+            <textarea class="form-control" id="descricaoMotivo" name="descricao" rows="4"
+              placeholder="Explique por que esse motivo é importante" required></textarea>
           </div>
 
           <div class="mb-3">
@@ -45,18 +103,15 @@
 
           <div class="text-end">
             <button type="button" class="btn-cancel" id="btn-cancelarForm">
-            <i class="fa-solid fa-circle-xmark me-2"></i>
-                Cancelar
+              <i class="fa-solid fa-circle-xmark me-2"></i>
+              Cancelar
             </button>
-            
+
             <button type="submit" class="btn-submit">
-            <i class="fa-solid fa-floppy-disk me-2"></i>
-                Salvar Motivo
+              <i class="fa-solid fa-floppy-disk me-2"></i>
+              Salvar Motivo
             </button>
           </div>
-
-
-
         </div>
       </form>
     </main>
