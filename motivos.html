@@ -24,7 +24,7 @@
       <div class="card-form motivos-grande">
   <h2 class="section-title"><i class="bi bi-heart-pulse-fill me-2"></i>Paciente: John Doe</h2>
 
-  <div class="motivos-grid">
+  <div class="motivos-grid" id="lista-motivos">
     <div class="motivo-pequeno d-flex align-items-center justify-content-center border rounded shadow-sm">
       Família
     </div>
@@ -55,6 +55,24 @@
         
         loadTemplate('template-header', '_header.html');
         loadTemplate('template-sidebar', '_sidebar.html');
+
+          const motivos = JSON.parse(localStorage.getItem('motivos')) || [];
+          const grid = document.querySelector('.motivos-grid');
+
+          motivos.forEach((motivo, index) => {
+    
+          const motivoDiv = document.createElement('div');
+          motivoDiv.className = 'motivo-pequeno';
+          motivoDiv.innerHTML = `
+            <div>
+            <strong>${motivo.nome}</strong><br>
+            <small>${motivo.data}</small><br>
+            <p style="margin-top: 5px;">${motivo.descricao}</p>
+            </div>
+          `;
+          const btnAdd = document.getElementById('btn-add-motivo');
+          grid.insertBefore(motivoDiv, btnAdd);
+        });
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

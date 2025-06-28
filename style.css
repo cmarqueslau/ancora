@@ -496,15 +496,21 @@ table, thead th, tbody td {
     color: white;
     text-align: center;
   }
-
+  
 
 /* início - motivos */
 
+body.criar-motivo {
+  background-color: var(--bg-registro);
+  color: black;
+}
+
+
 .card-form.motivos-grande {
-  padding: 2rem;
   background: white;
   border-radius: 1rem;
   box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
+  padding: 2rem;
 }
 
 .motivos-grid {
@@ -556,33 +562,74 @@ table, thead th, tbody td {
   cursor: pointer;
 }
 
-#btn-add-motivo {
-  font-size: 2rem;
-  font-weight: bold;
-  border-style: dashed;
-  color: #3b5998;
-  background-color: #f0f4fb;
-}
-
 #btn-add-motivo:hover {
   background-color: #d0e4ff;
   color: #1b4b8a;
   border-color: #1b4b8a;
 }
 
-
 #btn-add-motivo:hover {
   background-color: #d0e4ff;
+}
+
+#criar-motivo-form .btn-final{
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    font-weight: 600;
+    margin-top: 1.5rem;
+  }
+
+#criar-motivo-form .btn-submit {
+  background-color: #3b5998;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#criar-motivo-form .btn-submit:hover {
+  background-color: #223868;
+  color: rgb(223, 237, 250);
+}
+
+#criar-motivo-form .btn-cancel {
+  background-color: #707172;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#criar-motivo-form .btn-cancel:hover {
+  background-color: #474747;
+  color: rgb(234, 236, 238);
+}
+
+#btn_primary .btn {
+  background-color: #3b5998;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+#btn_primary span {
+  color: #2c3e50;
 }
 
 body.temp-body.motivos-page {
   background-color: #f4f9fc;
 }
-
-body.criar-motivo {
-  background-color: var(--bg-registro);
-  color: black;
-}
-
 
 /* fim - motivos */
