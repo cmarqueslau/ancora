@@ -13,9 +13,67 @@
 </head>
 
 <body class="plano">
-    <div id="template-header"></div>
+    <header class="temp-header py-3 px-4">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="temp-logo-container">
+                <a href="index.html">
+                    <img src="./imagens/anchor.png" alt="Logotipo Âncora" class="temp-logo">
+                    <h1 class="temp-logo-title">Âncora</h1>
+                </a>
+            </div>
+            <nav class="temp-nav-links d-none d-md-flex">
+                <a href="./index.html"><i class="fas fa-home"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </nav>
+            <button class="btn d-md-none" id="temp-mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
     <div class="container-fluid d-flex p-0">
-        <div id="template-sidebar"></div>
+        <div class="temp-sidebar">
+            <div class="temp-sidebar-header">
+                <button class="temp-sidebar-btn" id="temp-sidebar-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <a href="./index.html" class="temp-nav-item">
+                <span class="temp-icon-wrapper" id="temp-icon-voltar">
+                    <i class="fa-solid fa-circle-left temp-nav-icon"></i>
+                </span>
+                <span class="temp-nav-text">Voltar</span>
+            </a>
+
+            <a href="#" class="temp-nav-item">
+                <span class="temp-icon-wrapper" id="temp-icon-cadastro">
+                    <i class="fa-solid fa-hospital-user temp-nav-icon"></i>
+                </span>
+                <span class="temp-nav-text">Cadastro de pacientes</span>
+            </a>
+
+            <a href="#" class="temp-nav-item">
+                <span class="temp-icon-wrapper" id="temp-icon-contato">
+                    <i class="fa-solid fa-phone temp-nav-icon"></i>
+                </span>
+                <span class="temp-nav-text">Contatos de emergência</span>
+            </a>
+
+            <a href="#" class="temp-nav-item">
+                <span class="temp-icon-wrapper" id="temp-icon-frases">
+                    <i class="fa-solid fa-quote-left temp-nav-icon"></i>
+                </span>
+                <span class="temp-nav-text">Frases de apoio</span>
+            </a>
+
+            <a href="#" class="temp-nav-item">
+                <span class="temp-icon-wrapper" id="temp-icon-sobre">
+                    <i class="fa-solid fa-circle-info temp-nav-icon"></i>
+                </span>
+                <span class="temp-nav-text">Sobre nós</span>
+            </a>
+        </div>
+
         <main class="mainPlano">
             <h1 id="titulo" class="tituloSecao">Ambiente Seguro</h1>
             <section>
@@ -104,7 +162,7 @@
                 localStorage.setItem('desvantagens', desvantagens);
                 localStorage.setItem('contatoEmergencia', contatoEmergencia);
 
-                window.location.href = 'planoFinal.html'; 
+                window.location.href = 'planoFinal.html';
             } else {
                 alert(mensagens.join('\n'));
             }
@@ -132,13 +190,6 @@
             document.getElementById('desvantagens').value = localStorage.getItem('desvantagens') || '';
             document.getElementById('contatoEmergencia').value = localStorage.getItem('contatoEmergencia') || '';
         });
-        async function loadTemplate(id, file) {
-            const res = await fetch(file);
-            const html = await res.text();
-            document.getElementById(id).innerHTML = html;
-        }
-        loadTemplate('template-header', '_header.html');
-        loadTemplate('template-sidebar', '_sidebar.html');
     </script>
 </body>
 
