@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualizar Motivo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/x-icon" href="imagens/anchor.png" />
+</head>
+
+<body class="temp-body criar-motivo">
+  <header class="temp-header py-3 px-4">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="temp-logo-container">
+        <a href="index.html">
+          <img src="./imagens/anchor.png" alt="Logotipo Âncora" class="temp-logo">
+          <h1 class="temp-logo-title">Âncora</h1>
+        </a>
+      </div>
+      <nav class="temp-nav-links d-none d-md-flex">
+        <a href="./index.html"><i class="fas fa-home"></i></a>
+        <a href="#"><i class="fas fa-user"></i></a>
+      </nav>
+      <button class="btn d-md-none" id="temp-mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="container-fluid d-flex p-0 containerDados">
+    <div class="temp-sidebar">
+      <div class="temp-sidebar-header">
+        <button class="temp-sidebar-btn" id="temp-sidebar-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <a href="./index.html" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-voltar">
+          <i class="fa-solid fa-circle-left temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Voltar</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-cadastro">
+          <i class="fa-solid fa-hospital-user temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Cadastro de pacientes</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-contato">
+          <i class="fa-solid fa-phone temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Contatos de emergência</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-frases">
+          <i class="fa-solid fa-quote-left temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Frases de apoio</span>
+      </a>
+
+      <a href="#" class="temp-nav-item">
+        <span class="temp-icon-wrapper" id="temp-icon-sobre">
+          <i class="fa-solid fa-circle-info temp-nav-icon"></i>
+        </span>
+        <span class="temp-nav-text">Sobre nós</span>
+      </a>
+    </div>
+
+    <main class="container mb-4 mt-5">
+      <h1 class="text-center mb-4 fw-bold" style="color:#3b5998">Visualizar Motivo</h1>
+
+      <div class="card-form mt-4">
+        <p><strong>Nome:</strong> <span id="motivo-nome"></span></p>
+        <p><strong>Descrição:</strong> <span id="motivo-descricao"></span></p>
+        <p><strong>Data de Criação:</strong> <span id="motivo-data"></span></p>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="motivos.html" class="btn btn-secondary">Voltar</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const motivo = JSON.parse(localStorage.getItem('motivoSelecionado'));
+    console.log("Motivo recuperado:", motivo);
+
+    if (motivo) {
+      document.getElementById('motivo-nome').textContent = motivo.nome;
+      document.getElementById('motivo-descricao').textContent = motivo.descricao;
+      document.getElementById('motivo-data').textContent = motivo.dataCriacao;
+    }
+  });
+</script>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

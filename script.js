@@ -39,33 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // Botão '+ Criar Motivo'
   const btnAddMotivo = document.getElementById('btn-add-motivo');
   if (btnAddMotivo) {
-    console.log("Botão '+ Criar Motivo' encontrado");
     btnAddMotivo.addEventListener('click', () => {
-      console.log("Redirecionando para criar-motivo.html");
       window.location.href = 'criar-motivo.html';
     });
-  } else {
-    console.warn("Botão '+ Criar Motivo' NÃO encontrado");
   }
 
   // Cancelar formulário
   const btnCancelar = document.getElementById('btn-cancelarForm');
   if (btnCancelar) {
     btnCancelar.addEventListener('click', () => {
-      console.log("Cancelado. Voltando à página anterior.");
       history.back();
     });
   }
 
   // Formulário de criação de motivo
   const formCriarMotivo = document.getElementById('criar-motivo-form');
-  console.log("formCriarMotivo:", formCriarMotivo);
   if (formCriarMotivo) {
-    console.log("Formulário encontrado e escutando submit");
-
     formCriarMotivo.addEventListener('submit', (e) => {
       e.preventDefault();
-      console.log("Submit interceptado");
 
       const nome = document.getElementById('nomeMotivo').value.trim();
       const descricao = document.getElementById('descricaoMotivo').value.trim();
@@ -89,11 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
       motivos.push(novoMotivo);
       localStorage.setItem('motivos', JSON.stringify(motivos));
 
-      console.log("Motivo salvo:", novoMotivo);
       window.location.href = 'motivos.html';
     });
 
-    // Flatpickr se necessário
+    // Flatpickr
     if (window.flatpickr) {
       flatpickr("#dataCriacao", {
         dateFormat: "d/m/Y",
@@ -102,36 +92,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Mostrar lista de motivos
-// Mostrar motivos na página motivos.html
-const listaMotivos = document.getElementById('lista-motivos');
-
-if (listaMotivos) {
-  const motivos = JSON.parse(localStorage.getItem('motivos')) || [];
+  // Mostrar lista de motivos na motivos.html
+  const listaMotivos = document.getElementById('lista-motivos');
   const btnAdd = document.getElementById('btn-add-motivo');
 
-  listaMotivos.innerHTML = ''; // Limpa antes de adicionar
+  if (listaMotivos && btnAdd) {
+    const motivos = JSON.parse(localStorage.getItem('motivos')) || [];
 
-  motivos.forEach(motivo => {
-    const div = document.createElement('div');
-    div.classList.add('motivo-pequeno');
-    div.innerHTML = `
-      <div class="d-flex flex-column text-center">
-        <strong>${motivo.nome}</strong>
-        <small>${motivo.dataCriacao}</small>
-        <p style="margin-top: 5px;">${motivo.descricao}</p>
-      </div>
-    `;
-    listaMotivos.appendChild(div); // adiciona normalmente
-  });
+    motivos.forEach(motivo => {
+      const div = document.createElement('div');
+      div.classList.add('motivo-pequeno');
+      div.innerHTML = `
+        <div class="text-center">
+          <strong>${motivo.nome}</strong><br>
+          <small>${motivo.dataCriacao}</small><br>
+          <p class="mt-2 mb-0">${motivo.descricao}</p>
+        </div>
+      `;
 
-  listaMotivos.appendChild(btnAdd); // garante que o botão fique por último
-}
+      div.addEventListener('click', () => {
+        localStorage.setItem('motivoSelecionado', JSON.stringify(motivo));
+        window.location.href = 'visualizar-motivo.html';
+      });
 
-document.getElementById('btn-add-motivo').addEventListener('click', () => {
-  window.location.href = 'criar-motivo.html';
+      listaMotivos.insertBefore(div, btnAdd);
+    });
+  }
+
+  // Carregar visualização do motivo
+  console.log("visualizar-motivo: carregando dados...");
+
+  const spanNome = document.getElementById('motivo-nome');
+  const spanDesc = document.getElementById('motivo-descricao');
+  const spanData = document.getElementById('motivo-data');
+
+  if (spanNome && spanDesc && spanData) {
+    const motivo = JSON.parse(localStorage.getItem('motivoSelecionado'));
+
+    if (!motivo) {
+      window.location.href = 'motivos.html';
+      return;
+    }
+
+    spanNome.textContent = motivo.nome;
+    spanDesc.textContent = motivo.descricao;
+    spanData.textContent = motivo.dataCriacao;
+  }
 });
 
+  document.addEventListener('DOMContentLoaded', () => {
+  const nomeEl = document.getElementById('motivo-nome');
+  const descricaoEl = document.getElementById('motivo-descricao');
+  const dataEl = document.getElementById('motivo-data');
+
+  if (nomeEl && descricaoEl && dataEl) {
+    const motivo = JSON.parse(localStorage.getItem('motivoSelecionado'));
+    console.log("Motivo recuperado:", motivo);
+
+    if (motivo) {
+      nomeEl.textContent = motivo.nome;
+      descricaoEl.textContent = motivo.descricao;
+      dataEl.textContent = motivo.dataCriacao;
+    }
+  }
 });
 
 // fim - motivos
