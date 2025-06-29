@@ -84,14 +84,13 @@
         <p><strong>Data de Criação:</strong> <span id="motivo-data"></span></p>
       </div>
 
-      <div class="text-center mt-4">
-        <a href="motivos.html" class="btn btn-secondary">Voltar</a>
-      </div>
-
-      <div class="d-flex justify-content-end gap-2 mt-3">
-        <button id="btn-editar" class="btn btn-primary">Editar</button>
-        <button id="btn-excluir" class="btn btn-danger">Excluir</button>
-      </div>
+    <div class="button-container">
+        <button id="btn-voltar" class="btn">Voltar</button>
+        <div class="text-end"> 
+            <button id="btn-editar" class="btn">Editar</button>
+            <button id="btn-excluir" class="btn">Excluir</button>
+        </div>
+    </div>
     </main>
   </div>
 
@@ -109,9 +108,20 @@
     // Agora, vamos pegar os botões e garantir que o código está funcionando.
     const btnExcluir = document.getElementById('btn-excluir');
     const btnEditar = document.getElementById('btn-editar');
+    const btnVoltar = document.getElementById('btn-voltar');
 
+    // VOLTAR
+    if (btnVoltar) {
+    btnVoltar.addEventListener('click', () => {
+      console.log("Voltando para a página motivos.html");
+      window.location.href = 'motivos.html'; // Redireciona para motivos.html
+    });
+    } else {
+    console.warn("Botão 'Voltar' NÃO encontrado");
+    }
+
+    // EXCLUIR
     if (btnExcluir) {
-      // EXCLUIR
       btnExcluir.addEventListener('click', () => {
         if (confirm('Tem certeza que deseja excluir este motivo?')) {
           let motivos = JSON.parse(localStorage.getItem('motivos')) || [];
@@ -123,8 +133,8 @@
       });
     }
 
+    // EDITAR
     if (btnEditar) {
-      // EDITAR
       btnEditar.addEventListener('click', () => {
         localStorage.setItem('modoEdicao', 'true');
         window.location.href = 'criar-motivo.html';
