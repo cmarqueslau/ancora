@@ -53,44 +53,59 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Formulário de criação de motivo
-  const formCriarMotivo = document.getElementById('criar-motivo-form');
-  if (formCriarMotivo) {
-    formCriarMotivo.addEventListener('submit', (e) => {
-      e.preventDefault();
+const formCriarMotivo = document.getElementById('criar-motivo-form');
 
-      const nome = document.getElementById('nomeMotivo').value.trim();
-      const descricao = document.getElementById('descricaoMotivo').value.trim();
-      let dataCriacao = document.getElementById('dataCriacao').value.trim();
+if (formCriarMotivo) {
+  const campoNome = document.getElementById('nomeMotivo');
+  const campoDescricao = document.getElementById('descricaoMotivo');
+  const campoData = document.getElementById('dataCriacao');
+  const motivoEdicao = JSON.parse(localStorage.getItem('motivoSelecionado'));
+  const modoEdicao = localStorage.getItem('modoEdicao') === 'true';
 
-      if (!nome || !descricao) {
-        alert("Preencha os campos Nome e Descrição!");
-        return;
-      }
-
-      if (!dataCriacao) {
-        const hoje = new Date();
-        const dia = String(hoje.getDate()).padStart(2, '0');
-        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
-        const ano = hoje.getFullYear();
-        dataCriacao = `${dia}/${mes}/${ano}`;
-      }
-
-      const novoMotivo = { nome, descricao, dataCriacao };
-      const motivos = JSON.parse(localStorage.getItem('motivos')) || [];
-      motivos.push(novoMotivo);
-      localStorage.setItem('motivos', JSON.stringify(motivos));
-
-      window.location.href = 'motivos.html';
-    });
-
-    // Flatpickr
-    if (window.flatpickr) {
-      flatpickr("#dataCriacao", {
-        dateFormat: "d/m/Y",
-        locale: "pt"
-      });
-    }
+  if (modoEdicao && motivoEdicao) {
+    campoNome.value = motivoEdicao.nome;
+    campoDescricao.value = motivoEdicao.descricao;
+    campoData.value = motivoEdicao.dataCriacao;
   }
+
+  formCriarMotivo.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nome = campoNome.value.trim();
+    const descricao = campoDescricao.value.trim();
+    let dataCriacao = campoData.value.trim();
+
+    if (!dataCriacao) {
+      const hoje = new Date();
+      const dia = String(hoje.getDate()).padStart(2, '0');
+      const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+      const ano = hoje.getFullYear();
+      dataCriacao = `${dia}/${mes}/${ano}`;
+    }
+
+    const novoMotivo = { nome, descricao, dataCriacao };
+    let motivos = JSON.parse(localStorage.getItem('motivos')) || [];
+
+    if (modoEdicao && motivoEdicao) {
+      motivos = motivos.filter(m => m.nome !== motivoEdicao.nome || m.dataCriacao !== motivoEdicao.dataCriacao);
+    }
+
+    motivos.push(novoMotivo);
+    localStorage.setItem('motivos', JSON.stringify(motivos));
+    localStorage.removeItem('motivoSelecionado');
+    localStorage.removeItem('modoEdicao');
+
+    window.location.href = 'motivos.html';
+  });
+
+  if (window.flatpickr) {
+    flatpickr("#dataCriacao", {
+      dateFormat: "d/m/Y",
+      locale: "pt"
+    });
+  }
+}
+
 
   // Mostrar lista de motivos na motivos.html
   const listaMotivos = document.getElementById('lista-motivos');
